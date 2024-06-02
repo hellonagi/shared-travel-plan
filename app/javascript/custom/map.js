@@ -14,6 +14,7 @@ async function initMap() {
 		zoom: 4,
 		center: position,
 		mapId: 'DEMO_MAP_ID',
+		mapTypeControl: false,
 	})
 
 	// The marker, positioned at Uluru
