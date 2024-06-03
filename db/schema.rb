@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_03_030055) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_03_132412) do
   create_table "todolists", force: :cascade do |t|
     t.float "latitude"
     t.float "longitude"
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_03_030055) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "todolists", "todos"
