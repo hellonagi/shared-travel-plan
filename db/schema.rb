@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_02_110726) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_03_030055) do
+  create_table "todolists", force: :cascade do |t|
+    t.float "latitude"
+    t.float "longitude"
+    t.string "details"
+    t.integer "todo_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["todo_id"], name: "index_todolists_on_todo_id"
+    t.index ["user_id"], name: "index_todolists_on_user_id"
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_todos_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
@@ -18,4 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_02_110726) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "todolists", "todos"
+  add_foreign_key "todolists", "users"
+  add_foreign_key "todos", "users"
 end
