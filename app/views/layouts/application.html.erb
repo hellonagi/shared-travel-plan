@@ -8,11 +8,14 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
   <body>
     <nav class="navbar fixed-top bg-body-tertiary">
       <div class="container-fluid">
-        <button class="btn btn-primary" type="button" id="sidebarToggle">サイドバーを表示</button>
+        <button class="btn btn-primary" type="button" id="sidebarToggle">
+          <i class="fas fa-bars"></i> <!-- サイドバーのアイコン -->
+        </button>
         <a class="navbar-brand" href="#">Title</a>
       </div>
     </nav>
