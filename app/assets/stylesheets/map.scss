@@ -1,14 +1,34 @@
-@import 'variables';
-
 html,
 body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #map {
-	margin-top: $navbar-height;
-	height: calc(100% - #{$navbar-height});
-	width: 100%;
+  height: 100vh;
+  width: 100%;
+}
+
+.content {
+  transition: margin-left 0.3s ease;
+}
+
+.content.active {
+  margin-left: 150px;
+}
+
+#sidebar {
+  position: fixed;
+  top: 56px; /* Adjust based on the navbar height */
+  left: -150px; /* Hidden by default */
+  width: 150px;
+  height: 100%;
+  background: #f8f9fa;
+  transition: left 0.3s ease;
+  z-index: 1000; /* To be above other content */
+}
+
+#sidebar.active {
+  left: 0;
 }

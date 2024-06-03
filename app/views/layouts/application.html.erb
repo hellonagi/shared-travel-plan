@@ -12,9 +12,36 @@
   <body>
     <nav class="navbar fixed-top bg-body-tertiary">
       <div class="container-fluid">
+        <button class="btn btn-primary" type="button" id="sidebarToggle">サイドバーを表示</button>
         <a class="navbar-brand" href="#">Title</a>
       </div>
     </nav>
-    <%= yield %>
+    <div id="sidebar">
+      <div class="sidebar-item p-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">リストの投稿</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">リスト一覧</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">履歴</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">プロフィール</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <%= yield %>
+    </div>
+    <script>
+      document.getElementById('sidebarToggle').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.querySelector('.content').classList.toggle('active');
+      });
+    </script>
   </body>
 </html>
