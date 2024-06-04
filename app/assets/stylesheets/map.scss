@@ -1,14 +1,14 @@
 @import 'variables';
 
 html,
-body {
+body,
+main {
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
 
 #map {
-	margin-top: $navbar-height;
-	height: calc(100% - #{$navbar-height});
+	height: 100%;
 	width: 100%;
 }
