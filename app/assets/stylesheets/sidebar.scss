@@ -1,20 +1,37 @@
+/* sidebar.scss */
 body {
 	min-height: 100vh;
 	min-height: -webkit-fill-available;
-}
-
-html {
+  }
+  
+  html {
 	height: -webkit-fill-available;
-}
-
-main {
+  }
+  
+  main {
 	height: 100vh;
 	height: -webkit-fill-available;
 	max-height: 100vh;
 	overflow-x: auto;
 	overflow-y: hidden;
-}
-
-.dropdown-toggle {
-	outline: 0;
-}
+  }
+  
+  .sidebar {
+	position: fixed;
+	top: 0;
+	left: -280px; /* Change from right to left */
+	width: 280px;
+	height: 100%;
+	background-color: #f8f9fa;
+	transition: left 0.3s ease; /* Change from right to left */
+	z-index: 1000;
+  }
+  
+  .sidebar.show {
+	left: 0; /* Change from right to left */
+  }
+  
+  #listToggle {
+	cursor: pointer;
+  }
+  

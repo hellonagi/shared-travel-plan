@@ -1,65 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TeamTora</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta charset="utf-8">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <body>
-      <%= render 'shared/icons' %>
-      <main class="d-flex flex-nowrap">
-        <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-            <span class="fs-4">Title</span>
+<head>
+  <title>TeamTora</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <%= render 'shared/icons' %>
+  <main class="d-flex flex-nowrap">
+    <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+        <span class="fs-4">Title</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+          <a href="#" class="nav-link" id="listToggle">
+            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+            リスト一覧
           </a>
-          <hr>
-          <ul class="nav nav-pills flex-column mb-auto">
-            <li>
-              <a href="#" class="nav-link">
-                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                リスト一覧
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link">
-                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                （リストタイトル1）
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link">
-                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                （リストタイトル2）
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link">
-                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                （リストタイトル3）
-              </a>
-            </li>
-          </ul>
-          <%= debug(params) if Rails.env.development? %>
-          <hr>
-          <div class="dropdown">
-            <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong>mdo</strong>
-            </a>
-            <ul class="dropdown-menu text-small shadow">
-              <li><a class="dropdown-item" href="#">リストの投稿</a></li>
-              <li><a class="dropdown-item" href="#">設定</a></li>
-              <li><a class="dropdown-item" href="#">プロフィール</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">サインアウト</a></li>
-            </ul>
-          </div>
-        </nav>
-        <%= yield %>
-      </main>
-      <%= javascript_include_tag "custom/sidebar", :defer => "defer"%>
-    </body>
-  </html>
+        </li>
+      </ul>
+      <%= debug(params) if Rails.env.development? %>
+      <hr>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong>mdo</strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow">
+          <li><a class="dropdown-item" href="#">リストの投稿</a></li>
+          <li><a class="dropdown-item" href="#">設定</a></li>
+          <li><a class="dropdown-item" href="#">プロフィール</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">サインアウト</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="sidebar" id="sidebar">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">（リストタイトル1）</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">（リストタイトル2）</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">（リストタイトル3）</a>
+        </li>
+      </ul>
+    </div>
+    <%= yield %>
+  </main>
+  <%= javascript_include_tag "custom/sidebar", defer: "defer" %>
+</body>
+</html>
