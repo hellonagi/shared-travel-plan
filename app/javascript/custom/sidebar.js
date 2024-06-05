@@ -10,12 +10,12 @@ console.log('HAHA1')
 })()
 
 document.addEventListener("DOMContentLoaded", function() {
-	const sidebar = document.getElementById("sidebar");
+	const slideSidebar = document.getElementById("slideSidebar");
 	const listToggle = document.getElementById("listToggle");
   
 	listToggle.addEventListener("click", function(event) {
 	  event.preventDefault(); // デフォルトのリンク動作を防ぐ
-	  sidebar.classList.toggle("show");
+	  slideSidebar.classList.toggle("show");
 	});
   });
   

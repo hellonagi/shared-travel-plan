@@ -19,16 +19,26 @@ body {
   .sidebar {
 	position: fixed;
 	top: 0;
-	left: -280px; /* Change from right to left */
+	left: 0;
 	width: 280px;
 	height: 100%;
 	background-color: #f8f9fa;
-	transition: left 0.3s ease; /* Change from right to left */
 	z-index: 1000;
   }
   
-  .sidebar.show {
-	left: 0; /* Change from right to left */
+  .slide-sidebar {
+	position: fixed;
+	top: 0;
+	left: -280px; /* 左に隠す */
+	width: 280px;
+	height: 100%;
+	background-color: #e9ecef;
+	transition: left 0.3s ease;
+	z-index: 1001; /* 元のサイドバーの上に表示する */
+  }
+  
+  .slide-sidebar.show {
+	left: 280px; /* 元のサイドバーの右側に表示 */
   }
   
   #listToggle {

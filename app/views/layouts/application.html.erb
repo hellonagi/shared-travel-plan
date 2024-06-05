@@ -24,6 +24,7 @@
             リスト一覧
           </a>
         </li>
+        <!-- 他のリスト項目 -->
       </ul>
       <%= debug(params) if Rails.env.development? %>
       <hr>
@@ -41,7 +42,7 @@
         </ul>
       </div>
     </nav>
-    <div class="sidebar" id="sidebar">
+    <div class="slide-sidebar" id="slideSidebar">
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link active" href="#">（リストタイトル1）</a>
@@ -57,5 +58,8 @@
     <%= yield %>
   </main>
   <%= javascript_include_tag "custom/sidebar", defer: "defer" %>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAP_API_KEY'] %>&libraries=maps&callback=initMap" defer></script>
+  <%= javascript_include_tag "custom/map", defer: "defer" %>
 </body>
 </html>
