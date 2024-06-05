@@ -1,14 +1,19 @@
 <div class="form-signin w-100 m-auto">
-  <form>
+  <%= form_with(model: @user) do |f| %>
     <h1 class="h3 mb-3 fw-normal">新規登録</h1>
+    <%= render 'shared/error_messages' %>
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">メールアドレス</label>
+      <%= f.text_field :name, class: "form-control", placeholder: "username" %>
+      <%= f.label :name, "ユーザーネーム" %>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">パスワード</label>
+      <%= f.password_field :password, class: "form-control", placeholder: "password" %>
+      <%= f.label :password, "パスワード" %>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-  </form>
+    <div class="form-floating mb-3">
+      <%= f.password_field :password_confirmation , class: "form-control",  placeholder: "password" %>
+      <%= f.label :password_confirmation, "パスワード確認" %>
+    </div>
+    <%= f.submit "新規登録", class: "btn btn-primary w-100 py-2" %>
+  <% end %>
 </div>
