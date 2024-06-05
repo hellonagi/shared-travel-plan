@@ -100,17 +100,32 @@
   </div>
 </div>
 <div class="slide-sidebar" id="postSlideSidebar">
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">（リストタイトル1）</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">（リストタイトル2）</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">（リストタイトル3）</a>
-    </li>
-  </ul>
+  <div class="container">
+    <h1>リストの投稿</h1>
+    <div class="search-bar">
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索">
+        <button class="btn btn-outline-success" type="submit">検索</button>
+      </form>
+    </div>
+    <form>
+      <div class="mb-3">
+        <label for="listTitle" class="form-label">リストの概要</label>
+        <div><textarea class="form-control" id="listTitle" rows="10" placeholder="例：沖縄県のおすすめのスポットをまとめました。"></textarea></div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">場所</label>
+        <div><textarea class="form-control" id="location" rows="3" placeholder="例：沖縄県"></textarea></div>
+      </div>
+      <div class="mb-3">
+        <label for="listImage" class="form-label">写真</label>
+        <div><input type="file" class="form-control" id="listImage"></div>
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">投稿</button>
+      </div>
+    </form>
+  </div>
 </div>
   <%= javascript_include_tag "custom/sidebar", defer: "defer" %>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
