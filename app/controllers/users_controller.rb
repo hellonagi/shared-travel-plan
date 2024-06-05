@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'Welcome to the Sample App!'
       redirect_to root_path
+      flash[:success] = 'Welcome to the Sample App!'
     else
       render 'new', status: :unprocessable_entity
     end

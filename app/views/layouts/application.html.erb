@@ -51,7 +51,6 @@
           <%= debug(params) if Rails.env.development? %>
           <hr>
           <div class="dropdown">
-
             <%= link_to "Sign up now!", signup_path, class: "btn btn-primary" %>
             <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
@@ -73,6 +72,10 @@
         </div>
         <%= yield %>
       </main>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "flash alert alert-#{message_type} position-fixed bottom-0 end-0 me-3") %>
+      <% end %>
       <%= javascript_include_tag "custom/sidebar", :defer => "defer"%>
+      <%= javascript_include_tag "custom/flash", :defer => "defer"%>
     </body>
   </html>
