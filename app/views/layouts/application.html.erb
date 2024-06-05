@@ -51,6 +51,8 @@
           <%= debug(params) if Rails.env.development? %>
           <hr>
           <div class="dropdown">
+
+            <%= link_to "Sign up now!", signup_path, class: "btn btn-primary" %>
             <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
               <strong>mdo</strong>
@@ -64,6 +66,11 @@
             </ul>
           </div>
         </nav>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
         <%= yield %>
       </main>
       <%= javascript_include_tag "custom/sidebar", :defer => "defer"%>

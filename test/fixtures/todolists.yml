@@ -3,13 +3,11 @@
 one:
   latitude: 1.5
   longitude: 1.5
-  details_en: MyString
   todo: one
   user: one
 
 two:
   latitude: 1.5
   longitude: 1.5
-  details_en: MyString
   todo: two
   user: two
