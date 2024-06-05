@@ -34,7 +34,7 @@
           <strong>mdo</strong>
         </a>
         <ul class="dropdown-menu text-small shadow">
-          <li><a class="dropdown-item" href="#">リストの投稿</a></li>
+          <li><a class="dropdown-item" href="#" id="postListToggle">リストの投稿</a></li>
           <li><a class="dropdown-item" href="#">設定</a></li>
           <li><a class="dropdown-item" href="#">プロフィール</a></li>
           <li><hr class="dropdown-divider"></li>
@@ -98,6 +98,19 @@
       </div>
     </div>
   </div>
+</div>
+<div class="slide-sidebar" id="postSlideSidebar">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">（リストタイトル1）</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">（リストタイトル2）</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">（リストタイトル3）</a>
+    </li>
+  </ul>
 </div>
   <%= javascript_include_tag "custom/sidebar", defer: "defer" %>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
