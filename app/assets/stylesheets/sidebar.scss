@@ -1,20 +1,138 @@
+/* sidebar.scss */
 body {
 	min-height: 100vh;
 	min-height: -webkit-fill-available;
-}
-
-html {
+  }
+  
+  html {
 	height: -webkit-fill-available;
-}
-
-main {
+  }
+  
+  main {
 	height: 100vh;
 	height: -webkit-fill-available;
 	max-height: 100vh;
 	overflow-x: auto;
 	overflow-y: hidden;
-}
+  }
+  
+  .sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 280px;
+	height: 100%;
+	background-color: #f8f9fa;
+	z-index: 1000;
+  }
+  
+  .slide-sidebar {
+	position: fixed;
+	top: 0;
+	left: -500px; /* 元のサイドバーの右端 */
+	width: 500px;
+	height: 100%;
+	background-color: #e9ecef;
+	transition: left 0.3s ease;
+	z-index: 999; /* 元のサイドバーの下に表示 */
+	overflow-y: auto; /* 内部スクロールを有効にする */
+  }
+  
+  .slide-sidebar.show {
+	left: 280px; /* スライドして表示 */
+  }
+  
+  #listToggle {
+	cursor: pointer;
+  }
+  
+  #postListToggle {
+	cursor: pointer;
+  }
+  
+  #postSlideSidebar {
+	position: fixed;
+	top: 0;
+	left: -500px; /* 元のサイドバーの右端 */
+	width: 500px;
+	height: 100%; /* 高さを100%に設定 */
+	background-color: #e9ecef;
+	transition: left 0.3s ease;
+	z-index: 998; /* 元のサイドバーの下に表示 */
+	overflow-y: auto; /* 内部スクロールを有効にする */
+  }
+  
+  #postSlideSidebar.show {
+	left: 280px; /* スライドして表示 */
+  }
 
-.dropdown-toggle {
-	outline: 0;
-}
+  .card {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	margin-bottom: 20px;
+  }
+  
+  .card img {
+	width: 150px;
+	height: auto;
+	object-fit: cover;
+	margin-right: 20px;
+  }
+  
+  .card-body {
+	flex: 1;
+  }
+  
+  .card-title {
+	font-size: 1.25rem;
+	font-weight: bold;
+	margin-top: 0; /* 上の隙間をなくす */
+  }
+  
+  .card-text {
+	margin-bottom: 0.5rem;
+  }
+  
+  .btn-primary {
+	background-color: #007bff;
+	border-color: #007bff;
+  }
+  
+  .container {
+	max-width: 900px;
+  }
+  
+  .search-bar {
+	margin-bottom: 20px;
+  }
+
+  #postSlideSidebar .container {
+	background: #fff;
+	padding: 2rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 600px;
+  }
+  
+  #postSlideSidebar h1 {
+	margin-bottom: 1.5rem;
+	font-size: 1.75rem;
+  }
+  
+  #postSlideSidebar .form-label {
+	font-weight: bold;
+  }
+  
+  #postSlideSidebar .btn-primary {
+	width: 100%;
+	margin-top: 15px;
+  }
+  
+  #postSlideSidebar .search-bar {
+	margin-bottom: 20px;
+  }
