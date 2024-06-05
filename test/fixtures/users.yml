@@ -2,8 +2,8 @@
 
 one:
   name: mike
-  password_digest: password
+  password_digest: <%= User.digest('password') %>
 
 two:
   name: john
-  password_digest: password
+  password_digest: <%= User.digest('password') %>

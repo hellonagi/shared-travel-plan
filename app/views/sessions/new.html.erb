@@ -1,0 +1,14 @@
+<div class="form-signin w-100 m-auto">
+  <%= form_with(url: login_path, scope: :session) do |f| %>
+    <h1 class="h3 mb-3 fw-normal">ログイン</h1>
+    <div class="form-floating">
+      <%= f.text_field :name, class: "form-control", placeholder: "username" %>
+      <%= f.label :name, "ユーザーネーム" %>
+    </div>
+    <div class="form-floating mb-3">
+      <%= f.password_field :password, class: "form-control", placeholder: "password" %>
+      <%= f.label :password, "パスワード" %>
+    </div>
+    <%= f.submit "ログイン", class: "btn btn-primary w-100 py-2" %>
+  <% end %>
+</div>
