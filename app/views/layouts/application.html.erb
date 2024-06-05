@@ -1,135 +1,144 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TeamTora</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta charset="utf-8">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-</head>
-<body>
-  <%= render 'shared/icons' %>
-  <main class="d-flex flex-nowrap">
-    <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-        <span class="fs-4">Title</span>
-      </a>
-      <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li>
-          <a href="#" class="nav-link" id="listToggle">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-            リスト一覧
-          </a>
-        </li>
-        <!-- 他のリスト項目 -->
-      </ul>
-      <%= debug(params) if Rails.env.development? %>
-      <hr>
-      <div class="dropdown">
-        <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-          <strong>mdo</strong>
+  <head>
+    <title>TeamTora</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <%= render 'shared/icons' %>
+    <main class="d-flex flex-nowrap">
+      <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+          <span class="fs-4">Title</span>
         </a>
-        <ul class="dropdown-menu text-small shadow">
-          <li><a class="dropdown-item" href="#" id="postListToggle">リストの投稿</a></li>
-          <li><a class="dropdown-item" href="#">設定</a></li>
-          <li><a class="dropdown-item" href="#">プロフィール</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">サインアウト</a></li>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link" id="listToggle">
+              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+              リスト一覧
+            </a>
+          </li>
         </ul>
+        <%= debug(params) if Rails.env.development? %>
+        <hr>
+        <% if logged_in? %>
+          <div class="dropdown">
+            <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+              <strong><%= current_user.name %></strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to "ログアウト", logout_path, class: "dropdown-item", data: { "turbo-method": :delete } %></li>
+            </ul>
+          </div>
+        <% else %>
+          <%= link_to "ログイン", login_path, class: "btn btn-primary" %>
+        <% end %>
+      </nav>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+        </div>
       </div>
-    </nav>
-    <%= yield %>
-  </main>
-  <div class="slide-sidebar" id="slideSidebar">
-  <div class="container">
-    <h3>リスト一覧</h3>
-
-    <!-- 検索バーを追加 -->
-    <div class="search-bar">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索">
-        <button class="btn btn-outline-success" type="submit">検索</button>
-      </form>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
-          <div class="card-body">
-            <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
-            <p class="card-text">ユーザーA</p>
-            <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
-            <a href="#" class="btn btn-primary">詳細を見る</a>
+      <%= yield %>
+    </main>
+    <div class="slide-sidebar" id="slideSidebar">
+      <div class="container">
+        <h3>リスト一覧</h3>
+        <!-- 検索バーを追加 -->
+        <div class="search-bar">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索">
+            <button class="btn btn-outline-success" type="submit">検索</button>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
+              <div class="card-body">
+                <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
+                <p class="card-text">ユーザーA</p>
+                <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
+                <a href="#" class="btn btn-primary">詳細を見る</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
+              <div class="card-body">
+                <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
+                <p class="card-text">ユーザーA</p>
+                <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
+                <a href="#" class="btn btn-primary">詳細を見る</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
+              <div class="card-body">
+                <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
+                <p class="card-text">ユーザーA</p>
+                <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
+                <a href="#" class="btn btn-primary">詳細を見る</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
-          <div class="card-body">
-            <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
-            <p class="card-text">ユーザーA</p>
-            <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
-            <a href="#" class="btn btn-primary">詳細を見る</a>
-          </div>
+    <div class="slide-sidebar" id="postSlideSidebar">
+      <div class="container">
+        <h1>リストの投稿</h1>
+        <div class="search-bar">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索">
+            <button class="btn btn-outline-success" type="submit">検索</button>
+          </form>
         </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
-          <div class="card-body">
-            <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
-            <p class="card-text">ユーザーA</p>
-            <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
-            <a href="#" class="btn btn-primary">詳細を見る</a>
+        <form>
+          <div class="mb-3">
+            <label for="listTitle" class="form-label">リストの概要</label>
+            <div>
+              <textarea class="form-control" id="listTitle" rows="10" placeholder="例：沖縄県のおすすめのスポットをまとめました。"></textarea>
+            </div>
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">場所</label>
+            <div>
+              <textarea class="form-control" id="location" rows="3" placeholder="例：沖縄県"></textarea>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="listImage" class="form-label">写真</label>
+            <div><input type="file" class="form-control" id="listImage"></div>
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary">投稿</button>
+          </div>
+        </form>
       </div>
     </div>
-  </div>
-</div>
-<div class="slide-sidebar" id="postSlideSidebar">
-  <div class="container">
-    <h1>リストの投稿</h1>
-    <div class="search-bar">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索">
-        <button class="btn btn-outline-success" type="submit">検索</button>
-      </form>
-    </div>
-    <form>
-      <div class="mb-3">
-        <label for="listTitle" class="form-label">リストの概要</label>
-        <div><textarea class="form-control" id="listTitle" rows="10" placeholder="例：沖縄県のおすすめのスポットをまとめました。"></textarea></div>
-      </div>
-      <div class="mb-3">
-        <label for="location" class="form-label">場所</label>
-        <div><textarea class="form-control" id="location" rows="3" placeholder="例：沖縄県"></textarea></div>
-      </div>
-      <div class="mb-3">
-        <label for="listImage" class="form-label">写真</label>
-        <div><input type="file" class="form-control" id="listImage"></div>
-      </div>
-      <div class="mb-3">
-        <button type="submit" class="btn btn-primary">投稿</button>
-      </div>
-    </form>
-  </div>
-</div>
-  <%= javascript_include_tag "custom/sidebar", defer: "defer" %>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAP_API_KEY'] %>&libraries=maps&callback=initMap" defer></script>
-  <%= javascript_include_tag "custom/map", defer: "defer" %>
-</body>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "flash alert alert-#{message_type} position-fixed bottom-0 end-0 me-3") %>
+    <% end %>
+    <%= javascript_include_tag "custom/sidebar", :defer => "defer"%>
+    <%= javascript_include_tag "custom/flash", :defer => "defer"%>
+  </body>
 </html>
