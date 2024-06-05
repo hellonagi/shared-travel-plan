@@ -29,19 +29,65 @@ body {
   .slide-sidebar {
 	position: fixed;
 	top: 0;
-	left: -280px; /* 左に隠す */
-	width: 280px;
+	left: -500px; /* 元のサイドバーの右端 */
+	width: 500px;
 	height: 100%;
 	background-color: #e9ecef;
 	transition: left 0.3s ease;
-	z-index: 1001; /* 元のサイドバーの上に表示する */
+	z-index: 999; /* 元のサイドバーの下に表示 */
+	overflow-y: auto; /* 内部スクロールを有効にする */
   }
   
   .slide-sidebar.show {
-	left: 280px; /* 元のサイドバーの右側に表示 */
+	left: 280px; /* スライドして表示 */
   }
   
   #listToggle {
 	cursor: pointer;
   }
   
+  .card {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	margin-bottom: 20px;
+  }
+  
+  .card img {
+	width: 150px;
+	height: auto;
+	object-fit: cover;
+	margin-right: 20px;
+  }
+  
+  .card-body {
+	flex: 1;
+  }
+  
+  .card-title {
+	font-size: 1.25rem;
+	font-weight: bold;
+	margin-top: 0; /* 上の隙間をなくす */
+  }
+  
+  .card-text {
+	margin-bottom: 0.5rem;
+  }
+  
+  .btn-primary {
+	background-color: #007bff;
+	border-color: #007bff;
+  }
+  
+  .container {
+	max-width: 900px;
+	margin-top: 20px;
+  }
+  
+  .search-bar {
+	margin-bottom: 20px;
+  }

@@ -18,4 +18,4 @@ document.addEventListener("DOMContentLoaded", function() {
 	  slideSidebar.classList.toggle("show");
 	});
   });
-  
+    

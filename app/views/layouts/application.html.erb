@@ -42,21 +42,63 @@
         </ul>
       </div>
     </nav>
-    <div class="slide-sidebar" id="slideSidebar">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">（リストタイトル1）</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">（リストタイトル2）</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">（リストタイトル3）</a>
-        </li>
-      </ul>
-    </div>
     <%= yield %>
   </main>
+  <div class="slide-sidebar" id="slideSidebar">
+  <div class="container">
+    <h3>リスト一覧</h3>
+
+    <!-- 検索バーを追加 -->
+    <div class="search-bar">
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索">
+        <button class="btn btn-outline-success" type="submit">検索</button>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
+          <div class="card-body">
+            <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
+            <p class="card-text">ユーザーA</p>
+            <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
+            <a href="#" class="btn btn-primary">詳細を見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
+          <div class="card-body">
+            <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
+            <p class="card-text">ユーザーA</p>
+            <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
+            <a href="#" class="btn btn-primary">詳細を見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="名古屋のレストラン">
+          <div class="card-body">
+            <h5 class="card-title mb-0">名古屋のおすすめのレストラン</h5>
+            <p class="card-text">ユーザーA</p>
+            <p class="card-text">名古屋のおすすめのレストランをまとめました。</p>
+            <a href="#" class="btn btn-primary">詳細を見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <%= javascript_include_tag "custom/sidebar", defer: "defer" %>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAP_API_KEY'] %>&libraries=maps&callback=initMap" defer></script>
