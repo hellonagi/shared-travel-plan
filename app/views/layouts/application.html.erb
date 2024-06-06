@@ -12,7 +12,7 @@
 <body>
   <%= render 'shared/icons' %>
   <main class="d-flex flex-nowrap">
-    <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;">
+    <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px; z-index: 1001;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
         <span class="fs-4">Title</span>
       </a>
@@ -46,7 +46,7 @@
   </main>
   <div class="slide-sidebar" id="slideSidebar">
   <div class="container">
-    <h3>リスト一覧</h3>
+    <h2 class="text-center">リスト一覧</h2>
 
     <!-- 検索バーを追加 -->
     <div class="search-bar">
@@ -129,7 +129,7 @@
 </div>
 <div class="slide-sidebar" id="detailSlideSidebar">
   <div class="container">
-    <h1 class="mb-4 text-center">リスト登録</h1>
+    <h2 class="mb-4 text-center">リスト詳細</h2>
     
     <div class="mb-3">
       <h2 class="h4">タイトル</h2>
