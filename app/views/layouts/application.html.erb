@@ -128,17 +128,50 @@
   </div>
 </div>
 <div class="slide-sidebar" id="detailSlideSidebar">
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">（リストタイトル1）</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">（リストタイトル2）</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">（リストタイトル3）</a>
-    </li>
-  </ul>
+  <div class="container">
+    <h1 class="mb-4 text-center">リスト登録</h1>
+    
+    <div class="mb-3">
+      <h2 class="h4">タイトル</h2>
+      <p>名古屋のおすすめレストラン</p>
+    </div>
+
+    <div class="mb-3">
+      <h2 class="h4">ユーザー名</h2>
+      <p>ユーザー1</p>
+    </div>
+
+    <div class="mb-3">
+      <h2 class="h4">概要</h2>
+      <p>名古屋駅周辺のおすすめのレストランを3個まとめました。</p>
+    </div>
+
+    <div class="mb-3">
+      <h2 class="h4">場所</h2>
+      <ul class="list-unstyled">
+        <li>ガスト名古屋駅前店</li>
+        <li>バーミヤン名古屋駅前店</li>
+        <li>マック名古屋駅前店</li>
+      </ul>
+    </div>
+
+    <div class="mb-3">
+      <h2 class="h4">写真</h2>
+      <div class="row">
+        <div class="col-4">
+          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="レストラン1" class="img-fluid">
+        </div>
+        <div class="col-4">
+          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="レストラン2" class="img-fluid">
+        </div>
+        <div class="col-4">
+          <img src="https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg" alt="レストラン3" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary mt-4">登録</button>
+  </div>
 </div>
   <%= javascript_include_tag "custom/sidebar", defer: "defer" %>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
