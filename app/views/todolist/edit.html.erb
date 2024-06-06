@@ -10,9 +10,8 @@
     <%= f.text_area :description %>
   </div>
 
-  <%# ログイン機能を作成していないため現在は1 %>
   <div>
-    <%= f.hidden_field :user_id, value: 1 %>
+    <%= f.hidden_field :user_id, value: @current_user.id %>
   </div>
 
   <% @todo.todo_lists.each_with_index do |todo_list, index| %>
@@ -45,7 +44,7 @@
   </div>
 <% end %>
 
-<%= form_with(url: listdelete_todolist_path(@todo), method: :delete, local: true) do %>
+<%= form_with(url: tododelete_path(@todo), method: :delete, local: true) do %>
   <%= submit_tag 'Delete Todo' %>
 <% end %>
 

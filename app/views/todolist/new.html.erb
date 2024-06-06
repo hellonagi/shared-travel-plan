@@ -11,15 +11,13 @@
   </div>
 </div>  
 
-
-  <%# ログイン機能を作成していないため現在は1 %>
   <div>
-    <%= f.hidden_field :user_id, value: 1 %>
+    <%= f.hidden_field :user_id, value: @current_user.id %>
   </div>
 
-  <% (1..3).each do |outer_index| %>
-    <h3>Set <%= outer_index %></h3>
-    <%= f.fields_for :todo_lists do |tf| %> 
+  <% (1..3).each do |index| %>
+    <h3>Set <%= index %></h3>
+    <%= f.fields_for :todo_lists, @todo.todo_lists[index] || @todo.todo_lists.build do |tf| %>
       <div>
         <%= tf.label :latitude %>
         <%= tf.text_field :latitude %>

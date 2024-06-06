@@ -12,7 +12,7 @@
 
 <% @todo.todo_lists.each_with_index do |todo_list, outer_index| %>
   <div>
-    <h1><%= @todo.todo_lists.size %></h1>
+    <h1><%= outer_index+1 %></h1>
     <strong>Latitude:</strong>
     <p><%= todo_list.latitude %></p>
   </div>

@@ -1,4 +1,6 @@
 class TodolistController < ApplicationController
+  before_action :require_login, only: [:new,:create, :edit, :update, :delete,:listdelete]
+
   #新しいtodoとtodolistを作成
   def new
     @todo = Todo.new
@@ -9,11 +11,6 @@ class TodolistController < ApplicationController
   def create
     @todo=Todo.new(todo_params)
     
-    #不要なTodolistを削除
-    @todo.todo_lists.reject! do |todo_list|
-      todo_list.latitude.blank? && todo_list.longitude.blank? && todo_list.details.blank? && todo_list.image.blank?
-    end
-
     if @todo.save
       redirect_to todo_path(@todo)
     else
@@ -37,25 +34,36 @@ class TodolistController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    if @todo.update(todo_params)
-      redirect_to todo_path(@todo)
-    else
-      render :edit
-    end
+    #更新のTodolistとログイン中にユーザを比較
+    if @todo.user_id==@current_user.id
+      #一致していれば、更新
+      if @todo.update(todo_params)
+        redirect_to todo_path(@todo)
+      #更新できない場合
+      else
+        render :edit
+      end
+    end    
   end
 
   #Todolistの削除
   def delete
     @todo = Todo.find(params[:id])
-    @todo.destroy
-    redirect_to root_path
+    if  @todo.user_id==@current_user.id  
+      @todo.destroy
+      redirect_to root_path
+    end  
   end  
 
   def listdelete
+    
     @todolist = Todolist.find(params[:id])
     @todo =Todo.find(@todolist.todo_id)
-    @todolist.destroy
-    redirect_to todo_path(@todo)
+
+    if @todo.user_id==@current_user.id
+      @todolist.destroy
+      redirect_to todo_path(@todo)
+    end
   end 
 
   
@@ -63,5 +71,12 @@ class TodolistController < ApplicationController
   #パラメータ制御
   def todo_params
     params.require(:todo).permit(:id,:title, :description, :user_id, todo_lists_attributes: [:id,:latitude, :longitude, :details, :image])
+  end
+
+  #ログインが必要
+  def require_login
+    unless logged_in?
+      redirect_to login_path, alert: "Please log in to continue"
+    end
   end
 end
