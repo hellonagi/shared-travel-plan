@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	const listToggle = document.getElementById("listToggle");
 	const postSlideSidebar = document.getElementById("postSlideSidebar");
 	const postListToggle = document.getElementById("postListToggle");
+	const detailSlideSidebar = document.getElementById("detailSlideSidebar");
+	const detailViewButtons = document.querySelectorAll(".detail-view");
   
 	listToggle.addEventListener("click", function(event) {
 	  event.preventDefault(); // デフォルトのリンク動作を防ぐ
@@ -23,6 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	postListToggle.addEventListener("click", function(event) {
 	  event.preventDefault(); // デフォルトのリンク動作を防ぐ
 	  postSlideSidebar.classList.toggle("show");
+	});
+  
+	detailViewButtons.forEach(button => {
+	  button.addEventListener("click", function(event) {
+		event.preventDefault(); // デフォルトのリンク動作を防ぐ
+		detailSlideSidebar.classList.toggle("show");
+	  });
 	});
   });
   
