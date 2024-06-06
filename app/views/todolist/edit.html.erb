@@ -1,0 +1,62 @@
+<%= form_with(model: @todo, local: true, url: update_todolist_path(@todo), method: :patch) do |f| %>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <%# ログイン機能を作成していないため現在は1 %>
+  <div>
+    <%= f.hidden_field :user_id, value: 1 %>
+  </div>
+
+  <% @todo.todo_lists.each_with_index do |todo_list, index| %>
+    <h3>Set <%= index + 1 %></h3>
+    <%= f.fields_for :todo_lists, todo_list do |tf| %>
+      <div>
+        <%= tf.label :latitude %>
+        <%= tf.text_field :latitude %>
+      </div>
+
+      <div>
+        <%= tf.label :longitude %>
+        <%= tf.text_field :longitude %>
+      </div>
+
+      <div>
+        <%= tf.label :details %>
+        <%= tf.text_area :details %>
+      </div>
+
+      <div>
+        <%= tf.label :image %>
+        <%= tf.file_field :image %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<%= form_with(url: listdelete_todolist_path(@todo), method: :delete, local: true) do %>
+  <%= submit_tag 'Delete Todo' %>
+<% end %>
+
+<% @todo.todo_lists.each_with_index do |todo_list, index| %>
+  <h3>Set <%= index + 1 %></h3>
+  <div>
+    <%= index %>
+  </div>
+  <%= form_with(url: listdelete_todolist_path(todo_list), method: :delete, local: true) do %>
+    <%= submit_tag 'Delete Todolist' %>
+  <% end %>      
+<% end %>
+
+

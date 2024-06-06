@@ -1,0 +1,48 @@
+<%= form_with(model: @todo, local: true, url: create_todolist_path) do |f| %>
+<div>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+</div>  
+
+
+  <%# ログイン機能を作成していないため現在は1 %>
+  <div>
+    <%= f.hidden_field :user_id, value: 1 %>
+  </div>
+
+  <% (1..3).each do |outer_index| %>
+    <h3>Set <%= outer_index %></h3>
+    <%= f.fields_for :todo_lists do |tf| %> 
+      <div>
+        <%= tf.label :latitude %>
+        <%= tf.text_field :latitude %>
+      </div>
+
+      <div>
+        <%= tf.label :longitude %>
+        <%= tf.text_field :longitude %>
+      </div>
+
+      <div>
+        <%= tf.label :details %>
+        <%= tf.text_area :details %>
+      </div>
+
+      <div>
+        <%= tf.label :image %>
+        <%= tf.file_field :image %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= f.submit "Create Todo" %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<h1>Todo Details</h1>
+
+<div>
+  <strong>Title:</strong>
+  <h2><%= @todo.title %></h2>
+</div>
+
+<div>
+  <strong>Description:</strong>
+  <h2><%= @todo.description %></h2>
+</div>
+
+<% @todo.todo_lists.each_with_index do |todo_list, outer_index| %>
+  <div>
+    <h1><%= @todo.todo_lists.size %></h1>
+    <strong>Latitude:</strong>
+    <p><%= todo_list.latitude %></p>
+  </div>
+  <div>
+    <strong>Longitude:</strong>
+    <p><%= todo_list.longitude %></p>
+  </div>
+  <div>
+    <strong>Details:</strong>
+    <p><%= todo_list.details %></p>
+  </div>
+<% end %>
+
+
+
