@@ -9,6 +9,9 @@ class Todo < ApplicationRecord
   #バリデーションを走らせる前に、Fromの空要素を削除
   before_validation :remove_empty_todo_lists
 
+  #コメントテーブルを複数所持する
+  has_many :comments
+
   private
   def remove_empty_todo_lists
     todo_lists.each do |todo_list|
