@@ -1,3 +1,4 @@
+@import 'variables';
 @import 'bootstrap';
 @import 'map';
 @import 'sidebar';
@@ -10,4 +11,12 @@
 	float: left;
 	width: 100%;
 	margin-top: 45px;
+}
+
+.gravatar {
+	border-radius: 16px;
+}
+
+nav {
+	width: $navbar-width;
 }

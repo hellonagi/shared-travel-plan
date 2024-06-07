@@ -8,14 +8,16 @@
 })()
 
 document.addEventListener('DOMContentLoaded', function () {
-	console.log('AA')
 	const slideSidebar = document.getElementById('slideSidebar')
 	const listToggle = document.getElementById('listToggle')
 	const postSlideSidebar = document.getElementById('postSlideSidebar')
 	const postListToggle = document.getElementsByClassName('post-list-toggle')
 	const detailSlideSidebar = document.getElementById('detailSlideSidebar')
 	const detailViewButtons = document.getElementsByClassName('detail-view')
-	console.log(detailViewButtons)
+
+	// console.log(listToggle)
+	// console.log(postListToggle)
+	// console.log(detailViewButtons)
 
 	// 左メニューのリスト一覧をクリックしたときに発火
 	listToggle.addEventListener('click', function (event) {

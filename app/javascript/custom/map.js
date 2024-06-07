@@ -1,4 +1,6 @@
 async function initMap() {
+	console.log('AA2')
+
 	let map
 
 	// The location of Uluru

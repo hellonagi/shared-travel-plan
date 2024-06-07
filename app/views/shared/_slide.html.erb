@@ -1,43 +1,14 @@
-<% cards = [
-  {
-    image_src: "https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg",
-    alt_text: "名古屋のレストラン",
-    title: "名古屋のおすすめのレストラン",
-    author: "ユーザーA",
-    description: "名古屋のおすすめのレストランをまとめました。",
-    link: "#"
-  },
-  {
-    image_src: "https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg",
-    alt_text: "名古屋のレストラン",
-    title: "名古屋のおすすめのレストラン",
-    author: "ユーザーA",
-    description: "名古屋のおすすめのレストランをまとめました。",
-    link: "#"
-  },
-  {
-    image_src: "https://sakurayama.nagoya/wp-content/uploads/2018/10/img_5769-e1538973165405.jpg",
-    alt_text: "名古屋のレストラン",
-    title: "名古屋のおすすめのレストラン",
-    author: "ユーザーA",
-    description: "名古屋のおすすめのレストランをまとめました。",
-    link: "#"
-  }
-] %>
-<div class="slide-sidebar" id="slideSidebar">
-  <div class="container">
+<div class="slide-sidebar position-fixed bg-white" id="slideSidebar">
+  <div class="container p-4">
     <h2 class="text-center">リスト一覧</h2>
-    <!-- 検索バーを追加 -->
-    <div class="search-bar">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索">
-        <button class="btn btn-outline-success" type="submit">検索</button>
-      </form>
-    </div>
+    <%# <div class="input-group mb-3">
+      <input type="text" class="form-control">
+      <div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
+    </div> %>
     <div class="row">
-      <% cards.each do |card| %>
-        <div class="col-12">
-          <%= render partial: "shared/card", locals: card %>
+      <% @todos.each do |todo| %>
+        <div class="col-12 g-2">
+          <%= render partial: "shared/card", locals: {todo: todo} %>
         </div>
       <% end %>
     </div>

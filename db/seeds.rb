@@ -1,7 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+puts 'Seeding users...'
+
+User.create!(name: 'mike',
+             password: 'password')
+
+User.create!(name: 'bob',
+             password: 'password')
+
+puts 'Seeding todos...'
+
+User.all.each do |user|
+  2.times do
+    Todo.create!(
+      title: Faker::Lorem.sentence,
+      description: Faker::Lorem.paragraph,
+      user:
+    )
+  end
+end
+
+puts 'Seeding todolists...'
+
+Todo.all.each do |todo|
+  3.times do
+    Todolist.create!(
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude,
+      details: Faker::Lorem.sentence,
+      todo:
+    )
+  end
+end
+
+puts 'Seeding completed.'
