@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  latitude: 1.5
-  longitude: 1.5
-  todo: one
   user: one
+  todolist: one
+  status: false
+  comment: MyText
 
 two:
-  latitude: 1.5
-  longitude: 1.5
-  todo: two
   user: two
+  todolist: two
+  status: false
+  comment: MyText

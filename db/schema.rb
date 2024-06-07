@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_04_092720) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_07_112723) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,16 +39,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_04_092720) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "todo_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["todo_id"], name: "index_comments_on_todo_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "todolists", force: :cascade do |t|
     t.float "latitude"
     t.float "longitude"
     t.string "details"
     t.integer "todo_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_todolists_on_todo_id"
-    t.index ["user_id"], name: "index_todolists_on_user_id"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -58,6 +66,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_04_092720) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_todos_on_user_id"
+  end
+
+  create_table "todostates", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "todolist_id", null: false
+    t.boolean "status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "comment_id", null: false
+    t.index ["comment_id"], name: "index_todostates_on_comment_id"
+    t.index ["todolist_id"], name: "index_todostates_on_todolist_id"
+    t.index ["user_id"], name: "index_todostates_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,7 +90,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_04_092720) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "todos"
+  add_foreign_key "comments", "users"
   add_foreign_key "todolists", "todos"
-  add_foreign_key "todolists", "users"
   add_foreign_key "todos", "users"
+  add_foreign_key "todostates", "comments"
+  add_foreign_key "todostates", "todolists"
+  add_foreign_key "todostates", "users"
 end
