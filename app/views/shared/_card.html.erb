@@ -1,9 +1,9 @@
 <div class="card">
   <img src="<%= image_src %>" alt="<%= alt_text %>">
   <div class="card-body">
-    <h5 class="card-title mb-0"><%= title %></h5>
-    <p class="card-text"><%= author %></p>
+    <h5 class="card-title"><%= title %></h5>
+    <p class="card-text"><small class="text-body-secondary">ユーザー名：<%= author %></small></p>
     <p class="card-text"><%= description %></p>
-    <a href="<%= link %>" class="btn btn-primary detail-view">詳細を見る</a>
+    <a href="<%= link %>" class="btn btn-primary detail-view btn-sm">詳細を見る</a>
   </div>
 </div>
