@@ -13,11 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	const postSlideSidebar = document.getElementById('postSlideSidebar')
 	const postListToggle = document.getElementsByClassName('post-list-toggle')
 	const detailSlideSidebar = document.getElementById('detailSlideSidebar')
-	const detailViewButtons = document.getElementsByClassName('detail-view')
 
 	// console.log(listToggle)
 	// console.log(postListToggle)
-	// console.log(detailViewButtons)
 
 	function hideAllSidebars() {
 		slideSidebar.classList.remove('show')
@@ -46,14 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				hideAllSidebars()
 				postSlideSidebar.classList.add('show')
 			}
-		})
-	})
-
-	// 詳細を見るをクリックしたときに発火
-	Array.from(detailViewButtons).forEach((button) => {
-		button.addEventListener('click', function (event) {
-			event.preventDefault() // デフォルトのリンク動作を防ぐ
-			detailSlideSidebar.classList.toggle('show')
 		})
 	})
 })

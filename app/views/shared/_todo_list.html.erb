@@ -1,11 +1,11 @@
-<div class="slide-sidebar position-fixed bg-white" id="slideSidebar">
+<div class="slide-sidebar position-fixed bg-white z-1" id="slideSidebar">
   <div class="container p-4">
     <h2 class="fs-3 mb-2">リスト一覧</h2>
-    <%# <div class="input-group mb-3">
-      <input type="text" class="form-control">
-      <div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
-    </div> %>
-    <div class="row">
+    <div class="input-group flex-nowrap mb-3">
+      <input id="searchInput" type="text" class="form-control" placeholder="絞り込み" aria-label="絞り込み" aria-describedby="addon-wrapping">
+      <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+    </div>
+    <div class="row" id="resultsContainer">
       <% @todos.each do |todo| %>
         <div class="col-12 g-2">
           <%= render partial: "shared/card", locals: {todo: todo} %>
@@ -14,3 +14,4 @@
     </div>
   </div>
 </div>
+<%= javascript_include_tag "custom/search", defer: true %>
