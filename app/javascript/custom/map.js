@@ -1,4 +1,7 @@
+console.log('M1')
 async function initMap() {
+	console.log('M2')
+
 	let map, infoWindow
 	let markers = []
 	const position = { lat: 35.681236, lng: 139.767125 }
