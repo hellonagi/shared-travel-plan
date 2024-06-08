@@ -15,6 +15,16 @@ Rails.application.routes.draw do
   delete 'todo/:id',       to: 'todolist#delete'    ,as: 'tododelete'
   delete 'todolist/:id',   to: 'todolist#listdelete',as: 'listdelete_todolist'
 
+  #todostate(todoを追加)
+  get  'todostates/new',    to: 'todostates#new'
+  post 'todostates/create', to: 'todostates#create', as: 'add_todo'  
+
+  #todoの状況を参照
+  get 'todostates/:id',     to: 'todostates#show',as: 'todostate'
+
+  #todoの状況を更新
+  patch 'todostates/:id',     to: 'todostates#update', as: 'update_status'
+
   root 'maps#index'
   get  '/signup', to: 'users#new'
   post '/users', to: 'users#create'

@@ -11,10 +11,10 @@
   </head>
   <body>
     <%= render 'shared/icons' %>
-    <main class="d-flex flex-nowrap">
-      <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;">
+    <main class="d-flex flex-nowrap" style="position: relative;">
+      <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px; position: relative; z-index: 1100;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-          <span class="fs-4">Title</span>
+          <span class="fs-4">Jouney Junction</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
@@ -53,9 +53,9 @@
           <%= link_to "ログイン", login_path, class: "btn btn-primary" %>
         <% end %>
       </nav>
+      <%= render partial: "shared/slide" %>
       <%= yield %>
     </main>
-    <%= render partial: "shared/slide" %>
   </body>
   <% flash.each do |message_type, message| %>
     <%= content_tag(:div, message, class: "flash alert alert-#{message_type} position-fixed bottom-0 end-0 me-3") %>

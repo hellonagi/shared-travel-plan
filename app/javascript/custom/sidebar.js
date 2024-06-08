@@ -39,3 +39,28 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	})
 })
+
+document.addEventListener("DOMContentLoaded", function() {
+	const fileInput = document.getElementById("listImage");
+	const previewContainer = document.createElement("div");
+	fileInput.parentNode.appendChild(previewContainer);
+  
+	fileInput.addEventListener("change", function() {
+	  previewContainer.innerHTML = ""; // 以前のプレビューをクリア
+	  const files = fileInput.files;
+  
+	  Array.from(files).forEach(file => {
+		const reader = new FileReader();
+		reader.onload = function(e) {
+		  const img = document.createElement("img");
+		  img.src = e.target.result;
+		  img.className = "img-fluid mt-2";
+		  img.style.maxWidth = "150px";
+		  img.style.marginRight = "10px";
+		  previewContainer.appendChild(img);
+		};
+		reader.readAsDataURL(file);
+	  });
+	});
+  });
+  
