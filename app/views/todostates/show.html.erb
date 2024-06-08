@@ -1,0 +1,45 @@
+<h3>ユーザー名<%= current_user.id %></h3>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Todo Title</th>
+        <th>Todolist_id</th>
+        <th>Todo List latitude</th>
+        <th>Todo List longitude</th>
+        <th>Todostate Status</th>
+        <th>Todostate 更新</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @todostate.each do |record| %>
+        <tr>
+          <td><%= record.title %></td>
+          <td><%= record.todolist_id %></td>
+          <td><%= record.latitude %></td>
+          <td><%= record.longitude %></td>
+          <td><%= record.status %></td>
+          <td>
+            <%= form_with(url: 
+            update_status_path(record.todolist_id), method: :patch, local: true) do %>
+            <%= submit_tag 'chenge status' %>
+            <% end %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+</style>

@@ -1,5 +1,6 @@
 class Todolist < ApplicationRecord
   belongs_to :todo
+  has_many :todostates
   #不要なため削除
   # belongs_to :user
   #一つの投稿に対して、一つの画像をUPLOAD可能
