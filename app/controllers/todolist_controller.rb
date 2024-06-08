@@ -10,14 +10,14 @@ class TodolistController < ApplicationController
   #todo(todolist)を登録
   def create
     @todo=Todo.new(todo_params)
-    
+
     if @todo.save
       redirect_to todo_path(@todo)
     else
       render 'new'
-    end  
-  end  
-  
+    end
+  end
+
   # 各todolistの詳細を参照
   def todoshow
     @todo = Todo.includes(:todo_lists).find(params[:id])
@@ -31,6 +31,9 @@ class TodolistController < ApplicationController
       end
     end.compact
   end
+
+  
+
   #ユーザーが作成したTodoをすべて参照
   def usertodoshow
     @todo=Todo.includes(:todo_lists).where(user_id:params[:id])
@@ -45,7 +48,7 @@ class TodolistController < ApplicationController
       end
     end.compact
   end
-  
+
   #Todolistの更新
   def edit
     @todo=Todo.includes(:todo_lists).find(params[:id])
@@ -62,20 +65,20 @@ class TodolistController < ApplicationController
       else
         render :edit
       end
-    end    
+    end
   end
 
   #Todolistの削除
   def delete
     @todo = Todo.find(params[:id])
-    if  @todo.user_id==@current_user.id  
+    if  @todo.user_id==@current_user.id
       @todo.destroy
       redirect_to root_path
-    end  
-  end  
+    end
+  end
 
   def listdelete
-    
+
     @todolist = Todolist.find(params[:id])
     @todo =Todo.find(@todolist.todo_id)
 
@@ -83,9 +86,9 @@ class TodolistController < ApplicationController
       @todolist.destroy
       redirect_to todo_path(@todo)
     end
-  end 
+  end
 
-  
+
   private
   #パラメータ制御
   def todo_params

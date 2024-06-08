@@ -1,4 +1,5 @@
 class Todo < ApplicationRecord
+  has_many :comments, dependent: :destroy
   belongs_to :user
 
   #todoモデルとtodo_listsモデルは1:多
