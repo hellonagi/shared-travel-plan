@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('turbo:load', function () {
 	const searchInput = document.getElementById('searchInput')
 	const resultsContainer = document.getElementById('resultsContainer')
 	const detailSlideSidebar = document.getElementById('detailSlideSidebar')
@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	todos = Array.from(resultsContainer.children).map((todoDiv) => {
 		return {
 			title: todoDiv.querySelector('.card-title').textContent.trim(),
-			description: todoDiv.querySelector('.card-text').textContent.trim().replace('投稿者: ', ''), // Adjust according to actual HTML structure
-			author: todoDiv.querySelector('.card-text').textContent.trim(),
+			description: todoDiv.querySelector('.description-text').textContent.trim(),
+			author: todoDiv.querySelector('.author-text').textContent.trim().replace('投稿者: ', ''),
 			image: todoDiv.querySelector('img') ? todoDiv.querySelector('img').src : null,
 		}
 	})
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="col-md-10">
                 <div class="card-body">
                   <h5 class="card-title mb-0">${todo.title}</h5>
-                  <p class="card-text">投稿者: ${todo.author}</p>
-                  <p class="card-text">${todo.description}</p>
+                  <p class="card-text author-text">投稿者: ${todo.author}</p>
+                  <p class="card-text description-text">${todo.description}</p>
                 </div>
               </div>
             </div>

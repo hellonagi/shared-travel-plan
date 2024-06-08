@@ -7,7 +7,7 @@
 	})
 })()
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('turbo:load', function () {
 	const slideSidebar = document.getElementById('slideSidebar')
 	const listToggle = document.getElementById('listToggle')
 	const postSlideSidebar = document.getElementById('postSlideSidebar')
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 })
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('turbo:load', function () {
 	const fileInput = document.getElementById('listImage')
 	const previewContainer = document.createElement('div')
 	fileInput.parentNode.appendChild(previewContainer)
