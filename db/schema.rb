@@ -74,8 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_07_112723) do
     t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "comment_id", null: false
-    t.index ["comment_id"], name: "index_todostates_on_comment_id"
     t.index ["todolist_id"], name: "index_todostates_on_todolist_id"
     t.index ["user_id"], name: "index_todostates_on_user_id"
   end
@@ -94,7 +92,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_07_112723) do
   add_foreign_key "comments", "users"
   add_foreign_key "todolists", "todos"
   add_foreign_key "todos", "users"
-  add_foreign_key "todostates", "comments"
   add_foreign_key "todostates", "todolists"
   add_foreign_key "todostates", "users"
 end
