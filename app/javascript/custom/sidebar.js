@@ -19,9 +19,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	// console.log(postListToggle)
 	// console.log(detailViewButtons)
 
+	function hideAllSidebars() {
+		slideSidebar.classList.remove('show')
+		postSlideSidebar.classList.remove('show')
+		detailSlideSidebar.classList.remove('show')
+	}
+
 	// 左メニューのリスト一覧をクリックしたときに発火
 	listToggle.addEventListener('click', function (event) {
 		event.preventDefault() // デフォルトのリンク動作を防ぐ
+		hideAllSidebars()
 		slideSidebar.classList.toggle('show')
 	})
 
@@ -29,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	Array.from(postListToggle).forEach((button) => {
 		button.addEventListener('click', function (event) {
 			event.preventDefault() // デフォルトのリンク動作を防ぐ
+			hideAllSidebars()
 			postSlideSidebar.classList.toggle('show')
 		})
 	})
