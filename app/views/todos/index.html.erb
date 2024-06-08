@@ -65,6 +65,6 @@
     });
   </script>
 </main>
-<%= render partial: "shared/slide", locals: { todos: @todos } %>
 <%= javascript_include_tag "custom/map", :defer => "defer" %>
 <%= javascript_include_tag "custom/sidebar", :defer => "defer" %>
+<%= render partial: "shared/slide", locals: { todos: @todos } %>

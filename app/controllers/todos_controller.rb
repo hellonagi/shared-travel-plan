@@ -4,7 +4,7 @@ class TodosController < ApplicationController
 
   def index
     @todo = Todo.new
-    todos = Todo.limit(10)
+    todos = Todo.order(created_at: :desc).limit(20)
     @todos = todos.map { |todo| build_response(todo) }
     @form_slide_open = false
   end
@@ -56,10 +56,12 @@ class TodosController < ApplicationController
 
   def build_response(todo)
     {
+      id: todo.id,
       title: todo.title,
       description: todo.description,
       author: todo.user.name,
-      image: todo.todo_lists.first&.image || nil
+      image: todo.todo_lists.first&.image || nil,
+      list: todo.todo_lists
     }
   end
 
