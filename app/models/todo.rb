@@ -12,6 +12,9 @@ class Todo < ApplicationRecord
   #コメントテーブルを複数所持する
   has_many :comments
 
+  validates :title, presence: true
+  validates :description, presence: true
+
   private
   def remove_empty_todo_lists
     todo_lists.each do |todo_list|

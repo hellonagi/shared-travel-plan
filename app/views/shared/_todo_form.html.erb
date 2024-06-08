@@ -1,36 +1,49 @@
-<div class="slide-sidebar position-fixed bg-white" id="postSlideSidebar">
+<div class="slide-sidebar position-fixed bg-white <%= 'show' if @form_slide_open %>" id="postSlideSidebar">
   <div class="container p-4">
     <h2 class="fs-3 mb-2">リストの投稿</h1>
-    <%# <div class="search-bar">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索">
-        <button class="btn btn-outline-success" type="submit">検索</button>
-      </form>
-    </div> %>
-    <div id="search-container">
-      <input type="text" id="search-input" placeholder="検索キーワードを入力">
-      <button onclick="performSearch()">検索</button>
+    <% if @todo&.errors&.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @todo.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form_with(model: @todo, url: create_todo_path, local: true) do |f| %>
+      <fieldset class="form-group">
+        <%= f.label :title, "タイトル", class: 'form-label' %>
+        <%= f.text_field :title, class: 'form-control', placeholder: "タイトル" %>
+      </fieldset>
+      <fieldset class="form-group">
+        <%= f.label :description, "リストの概要", class: 'form-label' %>
+        <%= f.text_area :description, rows: 3, class: 'form-control', placeholder: "例：沖縄県のおすすめのスポットをまとめました。" %>
+      </fieldset>
+      <h3 class="fs-5">リスト</h3>
+      <div id="todo_lists">
+        <%= f.fields_for :todo_lists do |todolist_form| %>
+          <div class="card mb-2 placeholder-card">
+            <div class="card-body">
+              <p class="card-text">まだリストが追加されていません。</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <input type="text" name="query" id="query" placeholder="Search places..." class="form-control">
+        <button id="search-button" class="btn btn-primary">検索</button>
+      </div>
+      <%= f.submit "投稿", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<%= javascript_include_tag "custom/form", defer: true %>
+<div id="search-result" class="position-fixed position-fixed bottom-0 end-0 me-3">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style="width: 380px;">
+    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+      <span class="fs-5 fw-semibold">検索結果</span>
+    </a>
+    <div id="search-result-list" class="list-group list-group-flush border-bottom scrollarea">
     </div>
-    <form>
-      <div class="mb-3">
-        <label for="listTitle" class="form-label">リストの概要</label>
-        <div>
-          <textarea class="form-control" id="listTitle" rows="10" placeholder="例：沖縄県のおすすめのスポットをまとめました。"></textarea>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="location" class="form-label">場所</label>
-        <div>
-          <textarea class="form-control" id="location" rows="3" placeholder="例：沖縄県"></textarea>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="listImage" class="form-label">写真</label>
-        <div><input type="file" class="form-control" id="listImage"></div>
-      </div>
-      <div class="mb-3">
-        <button type="submit" class="btn btn-primary">投稿</button>
-      </div>
-    </form>
   </div>
 </div>
