@@ -35,5 +35,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  post 'search', to: 'todos#search', as: 'search_places'
+
   resources :comments, only: %i[index show]
 end
