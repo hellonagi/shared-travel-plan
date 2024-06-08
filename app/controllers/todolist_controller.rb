@@ -20,11 +20,30 @@ class TodolistController < ApplicationController
   
   # 各todolistの詳細を参照
   def todoshow
-    @todo=Todo.includes(:todo_lists).find(params[:id])
+    @todo = Todo.includes(:todo_lists).find(params[:id])
+    @todo_lists = @todo.todo_lists
+
+    @image_urls = @todo_lists.map do |todolist|
+      if todolist.image.attached?
+        url_for(todolist.image)
+      else
+        nil
+      end
+    end.compact
   end
   #ユーザーが作成したTodoをすべて参照
   def usertodoshow
     @todo=Todo.includes(:todo_lists).where(user_id:params[:id])
+
+    @todo_lists = @todo.todo_lists
+
+    @image_urls = @todo_lists.map do |todolist|
+      if todolist.image.attached?
+        url_for(todolist.image)
+      else
+        nil
+      end
+    end.compact
   end
   
   #Todolistの更新
