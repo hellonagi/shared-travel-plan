@@ -1,0 +1,31 @@
+<% @todo.each_with_index do |todo, index| %>
+  <div>
+      <h1>Todo Details<%= index%></h1>
+        <div>
+          <strong>Title:</strong>
+          <h2><%= todo.title %></h2>
+        </div>
+
+        <div>
+          <strong>Description:</strong>
+          <h2><%= todo.description %></h2>
+        </div>
+
+        <h3>Todo Lists:</h3>
+        <% todo.todo_lists.each do |todo_list ,index| %>
+          <div>
+            <strong>Latitude:</strong>
+            <p><%= todo_list.latitude %></p>
+          </div>
+          <div>
+            <strong>Longitude:</strong>
+            <p><%= todo_list.longitude %></p>
+          </div>
+          <div>
+            <strong>Details:</strong>
+            <p><%= todo_list.details %></p>
+          </div>
+  </div>
+
+  <% end %>
+<% end %>
