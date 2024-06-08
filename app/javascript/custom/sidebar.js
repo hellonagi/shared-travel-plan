@@ -28,16 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
 	// 左メニューのリスト一覧をクリックしたときに発火
 	listToggle.addEventListener('click', function (event) {
 		event.preventDefault() // デフォルトのリンク動作を防ぐ
-		hideAllSidebars()
-		slideSidebar.classList.toggle('show')
+		if (slideSidebar.classList.contains('show')) {
+			hideAllSidebars() 
+		} else {
+			hideAllSidebars()
+			slideSidebar.classList.add('show')
+		}
 	})
 
 	// 投稿をクリックしたときに発火
 	Array.from(postListToggle).forEach((button) => {
 		button.addEventListener('click', function (event) {
 			event.preventDefault() // デフォルトのリンク動作を防ぐ
-			hideAllSidebars()
-			postSlideSidebar.classList.toggle('show')
+			if (postSlideSidebar.classList.contains('show')) {
+				hideAllSidebars() 
+			} else {
+				hideAllSidebars()
+				postSlideSidebar.classList.add('show')
+			}
 		})
 	})
 
@@ -50,27 +58,26 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 })
 
-document.addEventListener("DOMContentLoaded", function() {
-	const fileInput = document.getElementById("listImage");
-	const previewContainer = document.createElement("div");
-	fileInput.parentNode.appendChild(previewContainer);
-  
-	fileInput.addEventListener("change", function() {
-	  previewContainer.innerHTML = ""; // 以前のプレビューをクリア
-	  const files = fileInput.files;
-  
-	  Array.from(files).forEach(file => {
-		const reader = new FileReader();
-		reader.onload = function(e) {
-		  const img = document.createElement("img");
-		  img.src = e.target.result;
-		  img.className = "img-fluid mt-2";
-		  img.style.maxWidth = "150px";
-		  img.style.marginRight = "10px";
-		  previewContainer.appendChild(img);
-		};
-		reader.readAsDataURL(file);
-	  });
-	});
-  });
-  
+document.addEventListener('DOMContentLoaded', function () {
+	const fileInput = document.getElementById('listImage')
+	const previewContainer = document.createElement('div')
+	fileInput.parentNode.appendChild(previewContainer)
+
+	fileInput.addEventListener('change', function () {
+		previewContainer.innerHTML = '' // 以前のプレビューをクリア
+		const files = fileInput.files
+
+		Array.from(files).forEach((file) => {
+			const reader = new FileReader()
+			reader.onload = function (e) {
+				const img = document.createElement('img')
+				img.src = e.target.result
+				img.className = 'img-fluid mt-2'
+				img.style.maxWidth = '150px'
+				img.style.marginRight = '10px'
+				previewContainer.appendChild(img)
+			}
+			reader.readAsDataURL(file)
+		})
+	})
+})
