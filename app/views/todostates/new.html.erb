@@ -1,0 +1,21 @@
+<% @todos.each do |todo| %>
+  <%= form_with(model: @todostate, url: add_todo_path, local: true) do |form| %>
+    <h3><%= todo.title %></h3>
+
+    <% todo.todo_lists.each do |todolist| %>  
+      <%= fields_for "todostate[todostates][]", Todostate.new do |ts_form| %>
+        <%= ts_form.hidden_field :user_id, value: current_user.id %>
+        <%= ts_form.hidden_field :todolist_id, value: todolist.id %>
+        <%= todolist.id%>
+        <%= ts_form.hidden_field :status,value:false %>
+      <% end %>
+    <% end %> 
+
+
+    <div class="actions">
+      <%= form.submit "Create Todostates" %>
+    </div>
+  <% end %>
+<% end %>
+
+

@@ -59,7 +59,7 @@ class TodosController < ApplicationController
       title: todo.title,
       description: todo.description,
       author: todo.user.name,
-      image: todo.todo_lists.first.image
+      image: todo.todo_lists.first&.image || nil
     }
   end
 
