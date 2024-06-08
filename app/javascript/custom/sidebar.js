@@ -1,13 +1,15 @@
 /* global bootstrap: false */
-;(() => {
-	'use strict'
-	const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-	tooltipTriggerList.forEach((tooltipTriggerEl) => {
-		new bootstrap.Tooltip(tooltipTriggerEl)
-	})
-})()
+console.log('S1')
+function initSideBar() {
+	console.log('S2')
+	;(() => {
+		'use strict'
+		const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		tooltipTriggerList.forEach((tooltipTriggerEl) => {
+			new bootstrap.Tooltip(tooltipTriggerEl)
+		})
+	})()
 
-document.addEventListener('turbo:load', function () {
 	const slideSidebar = document.getElementById('slideSidebar')
 	const listToggle = document.getElementById('listToggle')
 	const postSlideSidebar = document.getElementById('postSlideSidebar')
@@ -27,7 +29,7 @@ document.addEventListener('turbo:load', function () {
 	listToggle.addEventListener('click', function (event) {
 		event.preventDefault() // デフォルトのリンク動作を防ぐ
 		if (slideSidebar.classList.contains('show')) {
-			hideAllSidebars() 
+			hideAllSidebars()
 		} else {
 			hideAllSidebars()
 			slideSidebar.classList.add('show')
@@ -39,16 +41,14 @@ document.addEventListener('turbo:load', function () {
 		button.addEventListener('click', function (event) {
 			event.preventDefault() // デフォルトのリンク動作を防ぐ
 			if (postSlideSidebar.classList.contains('show')) {
-				hideAllSidebars() 
+				hideAllSidebars()
 			} else {
 				hideAllSidebars()
 				postSlideSidebar.classList.add('show')
 			}
 		})
 	})
-})
 
-document.addEventListener('turbo:load', function () {
 	const fileInput = document.getElementById('listImage')
 	const previewContainer = document.createElement('div')
 	fileInput.parentNode.appendChild(previewContainer)
@@ -70,4 +70,7 @@ document.addEventListener('turbo:load', function () {
 			reader.readAsDataURL(file)
 		})
 	})
-})
+}
+
+initSideBar()
+document.addEventListener('turbo:render', initSideBar)
