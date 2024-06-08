@@ -1,9 +1,16 @@
-<div class="card">
-  <img src="<%= image_src %>" alt="<%= alt_text %>">
-  <div class="card-body">
-    <h5 class="card-title"><%= title %></h5>
-    <p class="card-text"><small class="text-body-secondary">ユーザー名：<%= author %></small></p>
-    <p class="card-text"><%= description %></p>
-    <a href="<%= link %>" class="btn btn-primary detail-view btn-sm">詳細を見る</a>
-  </div>
+<div class="card shadow-sm">
+  <a href="#" class="link-opacity-75-hover detail-view">
+    <div class="row g-0">
+      <div class="col-md-2">
+        <%= image_with_placeholder(todo[:image], todo[:title]) %>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title mb-0"><%= todo[:title] %></h5>
+          <p class="card-text">投稿者: <%= todo[:author] %></p>
+          <p class="card-text"><%= todo[:description] %></p>
+        </div>
+      </div>
+    </div>
+  </a>
 </div>

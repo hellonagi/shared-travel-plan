@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       redirect_to root_path
-      flash[:success] = 'Welcome to the Sample App!'
+      flash.now[:success] = '新規登録に成功しました'
     else
       render 'new', status: :unprocessable_entity
     end

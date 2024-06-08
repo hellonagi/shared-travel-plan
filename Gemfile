@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.3'
 gem 'bcrypt', '3.1.18'
 gem 'bootsnap', '1.18.3', require: false
+gem 'http', '5.2.0'
 gem 'importmap-rails', '2.0.1'
 gem 'jbuilder', '2.12.0'
 gem 'puma', '~> 5.0'
@@ -26,6 +27,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '1.9.2', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 3.1', '>= 3.1.2'
+  gem 'faker', '2.21.0'
 end
 
 group :development do

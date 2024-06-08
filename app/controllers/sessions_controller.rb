@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       reset_session # ログインの直前に必ずこれを書くこと
       log_in user
       redirect_to root_path
+      flash.now[:success] = 'ログイン成功しました'
     else
       flash.now[:danger] = 'Invalid name/password combination'
       render 'new', status: :unprocessable_entity

@@ -8,59 +8,13 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <%= render 'shared/icons' %>
-    <main class="d-flex flex-nowrap" style="position: relative;">
-      <nav class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px; position: relative; z-index: 1100;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-          <span class="fs-4">Jouney Junction</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a href="#" class="nav-link" id="listToggle">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-              リスト一覧
-            </a>
-          </li>
-          <% if logged_in? %>
-            <li class="nav-item post-list-toggle">
-              <a href="#" class="nav-link" id="listToggle">
-                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                リストの投稿
-              </a>
-            </li>
-          <% end %>
-        </ul>
-        <%= debug(params) if Rails.env.development? %>
-        <hr>
-        <% if logged_in? %>
-          <div class="dropdown">
-            <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong><%= current_user.name %></strong>
-            </a>
-            <ul class="dropdown-menu text-small shadow">
-              <li><a class="dropdown-item post-list-toggle" href="#">リストの投稿</a></li>
-              <li><a class="dropdown-item" href="#">設定</a></li>
-              <li><a class="dropdown-item" href="#">プロフィール</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><%= link_to "ログアウト", logout_path, class: "dropdown-item", data: { "turbo-method": :delete } %></li>
-            </ul>
-          </div>
-        <% else %>
-          <%= link_to "ログイン", login_path, class: "btn btn-primary" %>
-        <% end %>
-      </nav>
-      <%= render partial: "shared/slide" %>
-      <%= yield %>
-    </main>
+    <%= yield %>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "flash alert alert-#{message_type} position-fixed bottom-0 end-0 me-3") %>
+    <% end %>
+    <%= javascript_include_tag "custom/flash", defer: true %>
   </body>
-  <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message, class: "flash alert alert-#{message_type} position-fixed bottom-0 end-0 me-3") %>
-  <% end %>
-  <%= javascript_include_tag "custom/sidebar", defer: true %>
-  <%= javascript_include_tag "custom/flash", defer: true %>
-</body>
 </html>

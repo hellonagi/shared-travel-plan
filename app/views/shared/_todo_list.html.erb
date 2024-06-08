@@ -1,0 +1,16 @@
+<div class="slide-sidebar position-fixed bg-white" id="slideSidebar">
+  <div class="container p-4">
+    <h2 class="fs-3 mb-2">リスト一覧</h2>
+    <%# <div class="input-group mb-3">
+      <input type="text" class="form-control">
+      <div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
+    </div> %>
+    <div class="row">
+      <% @todos.each do |todo| %>
+        <div class="col-12 g-2">
+          <%= render partial: "shared/card", locals: {todo: todo} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
