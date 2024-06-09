@@ -1,5 +1,4 @@
 async function initMap() {
-
 	let infoWindow
 	window.map = null
 	window.markers = []
@@ -104,9 +103,8 @@ async function initMap() {
 			window.markers.push({ markerView, pinView })
 			bounds.extend(position)
 
-			const listItem = document.createElement('a')
+			const listItem = document.createElement('span')
 			listItem.className = 'list-group-item list-group-item-action py-3 lh-sm'
-			listItem.href = '#'
 
 			const listItemContent = `
 				<div class="d-flex w-100 align-items-center justify-content-between">
@@ -145,19 +143,24 @@ async function initMap() {
 		const newFieldsHtml = `
       <div class="nested-fields card mb-2">
         <div class="card-body">
-          <h5 class="card-title">${place.displayName.text}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">${place.formattedAddress}</h6>
+          <h5 class="card-title fs-6">${place.displayName.text}</h5>
+          <h6 class="card-subtitle small mb-2 text-muted">${place.formattedAddress}</h6>
 
           <input type="hidden" name="todo[todo_lists_attributes][${newId}][latitude]" id="todo_todo_lists_attributes_${newId}_latitude" value="${place.location.latitude}" readonly class="form-control">
 
         	<input type="hidden" name="todo[todo_lists_attributes][${newId}][longitude]" id="todo_todo_lists_attributes_${newId}_longitude" value="${place.location.longitude}" readonly class="form-control">
 
           <fieldset class="form-group">
-            <label class="form-label" for="todo_todo_lists_attributes_${newId}_details">詳細</label>
+            <label class="form-label small" for="todo_todo_lists_attributes_${newId}_details">詳細</label>
             <textarea rows="3" class="form-control" name="todo[todo_lists_attributes][${newId}][details]" id="todo_todo_lists_attributes_${newId}_details"></textarea>
           </fieldset>
 
-          <a href="#" class="remove_fields btn btn-danger mt-2">削除</a>
+					<fieldset class="form-group mt-2">
+        		<label class="form-label small" for="todo_todo_lists_attributes_${newId}_image">画像アップロード</label>
+        		<input type="file" class="form-control-file" name="todo[todo_lists_attributes][${newId}][image]" id="todo_todo_lists_attributes_${newId}_image" accept="image/*">
+      		</fieldset>
+
+          <span class="remove_fields btn btn-sm btn-outline-danger mt-2">削除</span>
         </div>
       </div>
     `

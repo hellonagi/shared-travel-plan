@@ -65,11 +65,6 @@ main {
 	left: $navbar-width + $todo-list-width; /* スライドして表示 */
 }
 
-.btn-primary {
-	background-color: #007bff;
-	border-color: #007bff;
-}
-
 .container {
 	max-width: 900px;
 }
@@ -88,11 +83,6 @@ main {
 
 #postSlideSidebar .form-label {
 	font-weight: bold;
-}
-
-#postSlideSidebar .btn-primary {
-	width: 100%;
-	margin-top: 15px;
 }
 
 #postSlideSidebar .search-bar {
@@ -119,12 +109,6 @@ main {
 	height: auto;
 	object-fit: cover;
 	margin-right: 20px;
-}
-
-#detailSlideSidebar button {
-	width: 100%;
-	padding: 15px;
-	font-size: 18px;
 }
 
 .preview-img {
