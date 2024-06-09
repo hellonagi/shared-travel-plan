@@ -2,26 +2,32 @@
 <main class="d-flex flex-nowrap">
   <nav class="d-flex flex-column flex-shrink-0 p-3 z-3 bg-white" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-      <span class="fs-4">Title</span>
+      <span class="fs-5">Journey Junction</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
         <a href="#" class="nav-link" id="listToggle">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          <i class="fa-solid fa-list me-2"></i>
           リスト一覧
         </a>
       </li>
       <% if logged_in? %>
         <li class="nav-item post-list-toggle">
           <a href="#" class="nav-link" id="listToggle">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+            <i class="fa-solid fa-comment me-2"></i>
             リストの投稿
+          </a>
+        </li>
+        <li class="nav-item post-list-toggle">
+          <a href="#" class="nav-link" id="listToggle">
+            <i class="fa-solid fa-star me-2"></i>
+            お気に入り
           </a>
         </li>
       <% end %>
     </ul>
-    <%= debug(params) if Rails.env.development? %>
+    <%# <%= debug(params) if Rails.env.development? %>
     <hr>
     <% if logged_in? %>
       <div class="dropdown">
