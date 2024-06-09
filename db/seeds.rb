@@ -11,6 +11,18 @@ image_files = [
   Rails.root.join('db/seeds/images/ramen-hyogo.jpeg'),
   Rails.root.join('db/seeds/images/ramen-saitama.jpeg'),
   Rails.root.join('db/seeds/images/ramen-toyama.jpeg'),
+  Rails.root.join('db/seeds/images/sky-hakuba.jpg'),
+  Rails.root.join('db/seeds/images/sky-iwate.jpg'),
+  Rails.root.join('db/seeds/images/sky-niigata.jpg'),
+  Rails.root.join('db/seeds/images/sky-hokkaido.jpg'),
+  Rails.root.join('db/seeds/images/sky-nagano.jpg'),
+  Rails.root.join('db/seeds/images/sky-niseko.jpg'),
+  Rails.root.join('db/seeds/images/sky-zao.jpg'),
+  Rails.root.join('db/seeds/images/diving-miyakozima.jpg'),
+  Rails.root.join('db/seeds/images/diving-ishigakizima.jpg'),
+  Rails.root.join('db/seeds/images/diving-shikinezima.jpg'),
+  Rails.root.join('db/seeds/images/diving-ogasawara.jpg'),
+  Rails.root.join('db/seeds/images/diving-kagoshima.jpg'),
 ]
 
 puts 'Seeding users...'
@@ -47,6 +59,18 @@ t3 = Todo.create!(
 t4 = Todo.create!(
   title: '日本全国ぜひとも食べたいラーメン3選',
   description: '- 今回は2023印象に残ったラーメンを発表！！気になったお店があればぜひチェックしてみてくださいねー！',
+  user: mike
+)
+
+t5 = Todo.create!(
+  title: '一度は行きたい日本のスキーリゾート',
+  description: '近年、日本国内にあるスキー場は海外からも注目され、各国の富裕層が訪れる一大観光地となりつつあります。リゾート化が進み、ますます快適にスキーやスノーボードが楽しめるようになったスキー場を訪れ、思い思いに冬の休日を過ごしてみませんか。',
+  user: mike
+)
+
+t6 = Todo.create!(
+  title: '国内のおすすめダイビングスポット',
+  description: '理想的なダイビングスポットというと、まず海外のビーチを思い浮かべる方も多いかもしれませんが、実は国内にも驚くほどの透明度を誇る海はたくさん！中でも有名な沖縄のダイビングスポットをはじめ、今回は全国各地にあるおすすめダイビングスポットを選りすぐってご紹介していきます。',
   user: mike
 )
 
@@ -186,4 +210,164 @@ tdl10.image.attach(
   filename: 'ramen-toyama.jpg',
   content_type: 'image/jpg'
 )
+
+tdl11 = Todolist.create!(
+  latitude: 36.6908946,
+  longitude: 137.516094,
+  details: '冬季五輪の舞台、白馬ならではのウィンタースポーツ体験で気分はアスリート',
+  todo: t5
+)
+
+tdl11.image.attach(
+  io: File.open(image_files[10]),
+  filename: 'sky-hakuba.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl12 = Todolist.create!(
+  latitude: 40.0047999,
+  longitude: 140.9663302,
+  details: '八幡平の安比高原リゾートでスキーと雪景色を楽しむ大人の休日を',
+  todo: t5
+)
+
+tdl12.image.attach(
+  io: File.open(image_files[11]),
+  filename: 'sky-iwate.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl13 = Todolist.create!(
+  latitude: 36.8505748,
+  longitude: 138.6357571,
+  details: '時代をつくってきた苗場のスキーリゾートは世代を超えて遊べるスノーパラダイス',
+  todo: t5
+)
+
+tdl13.image.attach(
+  io: File.open(image_files[12]),
+  filename: 'sky-niigata.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl14 = Todolist.create!(
+  latitude: 42.7396852,
+  longitude: 140.8752705,
+  details: '世界が認めるルスツリゾートはゲレンデからアフタースキーまで至れり尽くせり',
+  todo: t5
+)
+
+tdl14.image.attach(
+  io: File.open(image_files[13]),
+  filename: 'sky-hokkaido.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl15 = Todolist.create!(
+  latitude: 36.9106822,
+  longitude: 138.4241122,
+  details: '野沢温泉郷にあるスキーリゾートはゲレンデから旅館の温泉まで即アクセス可能',
+  todo: t5
+)
+
+tdl15.image.attach(
+  io: File.open(image_files[14]),
+  filename: 'sky-nagano.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl16 = Todolist.create!(
+  latitude: 42.885775,
+  longitude: 140.6541231,
+  details: '国際リゾートのニセコで世界中のスキーヤーが憧れるパウダースノーを満喫',
+  todo: t5
+)
+
+tdl16.image.attach(
+  io: File.open(image_files[15]),
+  filename: 'sky-niseko.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl17 = Todolist.create!(
+  latitude: 38.1641644,
+  longitude: 140.3682303,
+  details: '蔵王の樹氷を眺めながら抜群の雪質を堪能できるスキーリゾート',
+  todo: t5
+)
+
+tdl17.image.attach(
+  io: File.open(image_files[16]),
+  filename: 'sky-zao.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl18 = Todolist.create!(
+  latitude: 24.812951,
+  longitude: 125.2785313,
+  details: '国内のダイビングスポットを語るならやっぱり沖縄ははずせない！
+ということで、まずご紹介するのは沖縄県にある離島のひとつ、宮古島です。',
+  todo: t6
+)
+
+tdl18.image.attach(
+  io: File.open(image_files[17]),
+  filename: 'diving-miyakozima.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl19 = Todolist.create!(
+  latitude: 24.4712799,
+  longitude: 124.0401864,
+  details: '透き通った海の中を悠々と泳ぎまわるマンタに出会えるダイビングスポットとして有名で、美しい砂地や華やかなサンゴなど、この世の楽園と見まがう光景の連続でダイバーたちを楽しませてくれます。',
+  todo: t6
+)
+
+tdl19.image.attach(
+  io: File.open(image_files[18]),
+  filename: 'diving-ishigakizima.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl20 = Todolist.create!(
+  latitude: 34.3264987,
+  longitude: 139.2002702,
+  details: '伊豆諸島のひとつである式根島は、人口わずか600人ほどの小さな島です。
+島をぐるっと取り囲むのは、ここって本当に日本なの！？と思わず息を呑んでしまうくらい、透き通ったエメラルドグリーンの海。',
+  todo: t6
+)
+
+tdl20.image.attach(
+  io: File.open(image_files[19]),
+  filename: 'diving-shikinezima.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl21 = Todolist.create!(
+  latitude: 27.1844715,
+  longitude: 140.9325061,
+  details: '国内有数の透明度を誇る海といえば、小笠原諸島も見逃せません。',
+  todo: t6
+)
+
+tdl21.image.attach(
+  io: File.open(image_files[20]),
+  filename: 'diving-ogasawara.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl22 = Todolist.create!(
+  latitude: 27.0434732,
+  longitude: 128.3488632,
+  details: '映画『めがね』のロケ地となったことで知られている与論島は、透明度抜群の海を生かしたダイビングスポットとしても有名です。',
+  todo: t6
+)
+
+tdl22.image.attach(
+  io: File.open(image_files[21]),
+  filename: 'diving-kagoshima.jpg',
+  content_type: 'image/jpg'
+)
+
+
 puts 'Seeding completed.'
