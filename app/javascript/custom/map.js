@@ -1,9 +1,8 @@
-console.log('M1')
 async function initMap() {
-	console.log('M2')
 
-	let map, infoWindow
-	let markers = []
+	let infoWindow
+	window.map = null
+	window.markers = []
 	const position = { lat: 35.681236, lng: 139.767125 }
 
 	//@ts-ignore
@@ -11,7 +10,7 @@ async function initMap() {
 	const { AdvancedMarkerView } = await google.maps.importLibrary('marker')
 	const { PinView } = await google.maps.importLibrary('marker')
 
-	map = new Map(document.getElementById('map'), {
+	window.map = new Map(document.getElementById('map'), {
 		zoom: 6,
 		center: position,
 		mapId: 'DEMO_MAP_ID',
@@ -33,14 +32,14 @@ async function initMap() {
 							lng: position.coords.longitude,
 						}
 
-						map.setCenter(pos)
+						window.map.setCenter(pos)
 					},
 					() => {
-						handleLocationError(true, infoWindow, map.getCenter())
+						handleLocationError(true, infoWindow, window.map.getCenter())
 					}
 				)
 			} else {
-				handleLocationError(false, infoWindow, map.getCenter())
+				handleLocationError(false, infoWindow, window.map.getCenter())
 			}
 		})()
 	}
@@ -77,8 +76,8 @@ async function initMap() {
 	})
 
 	function displayMarkers(data) {
-		markers.forEach(({ markerView }) => (markerView.map = null))
-		markers = []
+		window.markers.forEach(({ markerView }) => (markerView.map = null))
+		window.markers = []
 
 		const resultsList = document.getElementById('search-result-list')
 		resultsList.innerHTML = ''
@@ -96,13 +95,13 @@ async function initMap() {
 				scale: 1, // Default scale
 			})
 			const markerView = new AdvancedMarkerView({
-				map: map,
+				map: window.map,
 				position: position,
 				title: place.displayName.text,
 				content: pinView.element,
 			})
 
-			markers.push({ markerView, pinView })
+			window.markers.push({ markerView, pinView })
 			bounds.extend(position)
 
 			const listItem = document.createElement('a')
@@ -131,7 +130,7 @@ async function initMap() {
 			})
 		})
 
-		map.fitBounds(bounds)
+		window.map.fitBounds(bounds)
 	}
 
 	function addTodolistItem(place) {
@@ -193,7 +192,7 @@ async function initMap() {
 				? 'Error: The Geolocation service failed.'
 				: "Error: Your browser doesn't support geolocation."
 		)
-		infoWindow.open(map)
+		infoWindow.open(window.map)
 	}
 }
 

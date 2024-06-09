@@ -1,18 +1,44 @@
-document.addEventListener('turbo:load', function () {
+async function initSearch() {
+	const { AdvancedMarkerView } = await google.maps.importLibrary('marker')
+	const { PinView } = await google.maps.importLibrary('marker')
+	window.listMarkers = {}
+
 	const searchInput = document.getElementById('searchInput')
 	const resultsContainer = document.getElementById('resultsContainer')
 	const detailSlideSidebar = document.getElementById('detailSlideSidebar')
-	let todos = []
+	const todos = $('#td').data('td-id')
+	todos.forEach((todo) => {
+		const todoElement = document.getElementById(`card-${todo.id}`)
 
-	// 初期データを取得
-	todos = Array.from(resultsContainer.children).map((todoDiv) => {
-		return {
-			title: todoDiv.querySelector('.card-title').textContent.trim(),
-			description: todoDiv.querySelector('.description-text').textContent.trim(),
-			author: todoDiv.querySelector('.author-text').textContent.trim().replace('投稿者: ', ''),
-			image: todoDiv.querySelector('img') ? todoDiv.querySelector('img').src : null,
-		}
+		todo.list.forEach((li) => {
+			const position = { lat: li.latitude, lng: li.longitude }
+			const pinView = new PinView({
+				scale: 1,
+			})
+			const markerView = new AdvancedMarkerView({
+				map: window.map,
+				position: position,
+				title: li.details,
+				content: pinView.element,
+			})
+			window.listMarkers[li.id] = { markerView, pinView }
+			todoElement.addEventListener('mouseover', () => {
+				pinView.scale = 1.5
+			})
+			todoElement.addEventListener('mouseout', () => {
+				pinView.scale = 1
+			})
+		})
 	})
+
+
+	const detailTitle = document.getElementById('detail-title')
+	const detailDescription = document.getElementById('detail-description')
+	const detailAuthor = document.getElementById('detail-author')
+	const detailCards = document.getElementById('detail-cards')
+	// const detailLatitude = document.getElementById('detail-latitude')
+	// const detailLongitude = document.getElementById('detail-longitude')
+	// const detailDetails = document.getElementById('detail-details')
 
 	function filterData(input, data) {
 		const lowercasedInput = input.toLowerCase()
@@ -23,30 +49,26 @@ document.addEventListener('turbo:load', function () {
 	}
 
 	function displayResults(results) {
-		resultsContainer.innerHTML = '' // 以前の結果をクリア
-		results.forEach((todo) => {
-			const div = document.createElement('div')
-			div.className = 'col-12 g-2'
-			div.innerHTML = `
-        <div class="card shadow-sm">
-          <a href="#" class="link-opacity-75-hover detail-view">
-            <div class="row g-0">
-              <div class="col-md-2">
-                <img src="${todo.image}" alt="${todo.title}" class="img-fluid object-fit-cover preview-img" >
-	
-              </div>
-              <div class="col-md-10">
-                <div class="card-body">
-                  <h5 class="card-title mb-0">${todo.title}</h5>
-                  <p class="card-text author-text">投稿者: ${todo.author}</p>
-                  <p class="card-text description-text">${todo.description}</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      `
-			resultsContainer.appendChild(div)
+		todos.forEach((todo) => {
+			const todoElement = document.getElementById(`card-${todo.id}`)
+			if (todoElement) {
+				todoElement.classList.add('d-none')
+			}
+
+			todo.list.forEach((li) => {
+				window.listMarkers[li.id].markerView.map = null
+			})
+		})
+
+		results.forEach((result) => {
+			const resultElement = document.getElementById(`card-${result.id}`)
+			if (resultElement) {
+				resultElement.classList.remove('d-none')
+
+				result.list.forEach((li) => {
+					window.listMarkers[li.id].markerView.map = window.map
+				})
+			}
 		})
 	}
 
@@ -62,11 +84,43 @@ document.addEventListener('turbo:load', function () {
 
 	// イベントデリゲーションで詳細表示ボタンにイベントリスナーを設定
 	resultsContainer.addEventListener('click', function (event) {
-		if (event.target.closest('.detail-view')) {
+		const card = event.target.closest('.card-view')
+		if (card) {
 			event.preventDefault()
-			console.log('Detail view clicked')
-			console.log(detailSlideSidebar)
 			detailSlideSidebar.classList.toggle('show')
+
+			const todo = todos.find((t) => t.id == card.id.split('-')[1])
+			if (todo) {
+				detailTitle.textContent = todo.title
+				detailAuthor.textContent = todo.author
+				detailDescription.textContent = todo.description
+
+				detailCards.innerHTML = ''
+				todo.list.forEach((li) => {
+					const div = document.createElement('div')
+					const pinView = window.listMarkers[li.id].pinView
+					div.addEventListener('mouseover', () => {
+						pinView.scale = 1.5
+					})
+					div.addEventListener('mouseout', () => {
+						pinView.scale = 1
+					})
+
+					div.id = `detail-card-${li.id}`
+					div.className = 'card'
+					div.dataset.id = li.id
+					div.innerHTML = `
+						<img src="${li.image}" class="card-img-top" alt="${li.id}">
+						<div class="card-body">
+							<p id="detail" class="card-text">${li.details}</p>
+						</div>
+					`
+					detailCards.appendChild(div)
+				})
+			}
 		}
 	})
-})
+}
+
+initSearch()
+document.addEventListener('turbo:link', initSearch)

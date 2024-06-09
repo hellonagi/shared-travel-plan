@@ -1,7 +1,5 @@
 /* global bootstrap: false */
-console.log('S1')
 function initSideBar() {
-	console.log('S2')
 	;(() => {
 		'use strict'
 		const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -15,9 +13,6 @@ function initSideBar() {
 	const postSlideSidebar = document.getElementById('postSlideSidebar')
 	const postListToggle = document.getElementsByClassName('post-list-toggle')
 	const detailSlideSidebar = document.getElementById('detailSlideSidebar')
-
-	// console.log(listToggle)
-	// console.log(postListToggle)
 
 	function hideAllSidebars() {
 		slideSidebar.classList.remove('show')
