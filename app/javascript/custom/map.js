@@ -1,6 +1,4 @@
-console.log('M1')
 async function initMap() {
-	console.log('M2')
 
 	let infoWindow
 	window.map = null

@@ -31,7 +31,6 @@ async function initSearch() {
 		})
 	})
 
-	console.log(window.listMarkers)
 
 	const detailTitle = document.getElementById('detail-title')
 	const detailDescription = document.getElementById('detail-description')
