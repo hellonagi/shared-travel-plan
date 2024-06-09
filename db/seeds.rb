@@ -23,6 +23,14 @@ image_files = [
   Rails.root.join('db/seeds/images/diving-shikinezima.jpg'),
   Rails.root.join('db/seeds/images/diving-ogasawara.jpg'),
   Rails.root.join('db/seeds/images/diving-kagoshima.jpg'),
+  Rails.root.join('db/seeds/images/ramen.png'),
+  Rails.root.join('db/seeds/images/ramen2.jpg'),
+  Rails.root.join('db/seeds/images/ramen3.jpg'),
+  Rails.root.join('db/seeds/images/ramen4.jpg'),
+  Rails.root.join('db/seeds/images/ramen5.jpg'),
+  Rails.root.join('db/seeds/images/ramen6.jpg'),
+  Rails.root.join('db/seeds/images/ramen7.jpg'),
+  Rails.root.join('db/seeds/images/ramen8.jpg'),
 ]
 
 puts 'Seeding users...'
@@ -32,6 +40,9 @@ mike = User.create!(name: 'mike',
                     password: 'password')
 bob = User.create!(name: 'bob',
                    password: 'password')
+
+iwasaki = User.create!(name: 'iwasaki',
+                   password: 'password')                   
 
 puts 'Seeding todos...'
 
@@ -72,6 +83,30 @@ t6 = Todo.create!(
   title: '国内のおすすめダイビングスポット',
   description: '理想的なダイビングスポットというと、まず海外のビーチを思い浮かべる方も多いかもしれませんが、実は国内にも驚くほどの透明度を誇る海はたくさん！中でも有名な沖縄のダイビングスポットをはじめ、今回は全国各地にあるおすすめダイビングスポットを選りすぐってご紹介していきます。',
   user: mike
+)
+
+t7 = Todo.create!(
+  title: 'ラーメン職人が教えるおすすめ店',
+  description: 'ラーメンについて語ります',
+  user: mike
+)
+
+t8 = Todo.create!(
+  title: 'ラーメン日記',
+  description: '日々のラーメン日記を投稿します',
+  user: mike
+)
+
+t9 = Todo.create!(
+  title: 'ラーメン旅行',
+  description: '東京だけでなく様々な観光地での思い出のラーメンを投稿します',
+  user: mike
+)
+
+t10 = Todo.create!(
+  title: 'ラーメンLove',
+  description: 'test',
+  user: bob
 )
 
 puts 'Seeding todolists...'
@@ -369,5 +404,94 @@ tdl22.image.attach(
   content_type: 'image/jpg'
 )
 
+tdl23 = Todolist.create!(
+  latitude: 27.0434732,
+  longitude: 128.3488632,
+  details: 'ラーメン1',
+  todo: t7
+)
 
+tdl23.image.attach(
+  io: File.open(image_files[22]),
+  filename: 'ramen.png',
+  content_type: 'image/jpg'
+)
+
+tdl24 = Todolist.create!(
+  latitude: 27.1844715,
+  longitude: 140.9325061,
+  details: '2024年5月4日',
+  todo: t8
+)
+tdl24.image.attach(
+  io: File.open(image_files[23]),
+  filename: 'ramen2.png',
+  content_type: 'image/jpg'
+)
+
+
+tdl25 = Todolist.create!(
+  latitude: 27.1844715,
+  longitude: 140.9325061,
+  details: '2024年5月5日',
+  todo: t8
+)
+
+tdl25.image.attach(
+  io: File.open(image_files[24]),
+  filename: 'ramen3.png',
+  content_type: 'image/jpg'
+)
+
+tdl26 = Todolist.create!(
+  latitude: 43.4631317,
+  longitude: 141.8881767,
+  details: '北海道での思い出ラーメン',
+  todo: t9
+)
+
+tdl26.image.attach(
+  io: File.open(image_files[25]),
+  filename: 'ramen5.png',
+  content_type: 'image/jpg'
+)
+
+tdl27 = Todolist.create!(
+  latitude: 40.5032082,
+  longitude: 141.2186457,
+  details: '青森での思い出ラーメン',
+  todo: t9
+)
+
+tdl27.image.attach(
+  io: File.open(image_files[26]),
+  filename: 'ramen5.png',
+  content_type: 'image/jpg'
+)
+
+tdl27 = Todolist.create!(
+  latitude: 35.3396092,
+  longitude: 139.9165649,
+  details: 'd',
+  todo: t9
+)
+
+tdl27.image.attach(
+  io: File.open(image_files[27]),
+  filename: 'ramen6.png',
+  content_type: 'image/jpg'
+)
+
+tdl28 = Todolist.create!(
+  latitude: 35.3396092,
+  longitude: 139.9165649,
+  details: 'd',
+  todo: t9
+)
+
+tdl28.image.attach(
+  io: File.open(image_files[28]),
+  filename: 'ramen7.png',
+  content_type: 'image/jpg'
+)
 puts 'Seeding completed.'
