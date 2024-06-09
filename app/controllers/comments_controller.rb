@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to comment_path(@comment), notice: 'コメントが正常に更新されました。'
+      redirect_to todo_path(@comment.todo), notice: 'コメントが正常に更新されました。'
     else
       render :edit
     end
