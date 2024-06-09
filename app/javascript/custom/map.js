@@ -79,6 +79,9 @@ async function initMap() {
 		window.markers = []
 
 		const resultsList = document.getElementById('search-result-list')
+		const resultBox = document.getElementById('search-result')
+		resultBox.classList.remove('invisible')
+
 		resultsList.innerHTML = ''
 
 		if (data.length === 0) {
@@ -110,7 +113,7 @@ async function initMap() {
 				<div class="d-flex w-100 align-items-center justify-content-between">
 					<strong class="mb-1">${place.displayName.text}</strong>
 				</div>
-				<div class="col-12 mb-1 small">${place.formattedAddress}</div>
+				<div class="col-12 mb-1" style="font-size: 12px">${place.formattedAddress}</div>
       `
 
 			listItem.innerHTML = listItemContent

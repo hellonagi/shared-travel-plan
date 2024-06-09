@@ -37,11 +37,14 @@
     <% end %>
   </div>
 </div>
-<div id="search-result" class="position-fixed position-fixed bottom-0 end-0 me-3">
-  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style="width: 380px;">
-    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
-      <span class="fs-5 fw-semibold">検索結果</span>
-    </a>
+<div id="search-result" class="position-fixed position-fixed bottom-0 end-0 m-2 p-0 invisible" style="width: 250px;">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style="height: 350px">
+    <div class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom justify-content-between">
+      <span class="fs-6 fw-semibold">検索結果</span>
+      <span id="cross" >
+        <i role="button" class="fa-solid fa-xmark"></i>
+      </span>
+    </div>
     <div id="search-result-list" class="list-group list-group-flush border-bottom scrollarea">
     </div>
   </div>

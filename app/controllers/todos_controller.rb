@@ -46,7 +46,7 @@ class TodosController < ApplicationController
       headers: { 'Content-Type' => 'application/json',
                  'X-Goog-Api-Key': api_key,
                  'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.location' },
-      body: { textQuery: query, pageSize: 5, languageCode: 'ja', locationRestriction: {
+      body: { textQuery: query, pageSize: 10, languageCode: 'ja', locationRestriction: {
         rectangle: {
           low: { latitude: 24.396308, longitude: 122.934570 },
           high: { latitude: 45.551483, longitude: 153.986672 }

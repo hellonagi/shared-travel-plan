@@ -13,11 +13,13 @@ function initSideBar() {
 	const postSlideSidebar = document.getElementById('postSlideSidebar')
 	const postListToggle = document.getElementsByClassName('post-list-toggle')
 	const detailSlideSidebar = document.getElementById('detailSlideSidebar')
+	const resultBox = document.getElementById('search-result')
 
 	function hideAllSidebars() {
 		slideSidebar.classList.remove('show')
 		postSlideSidebar.classList.remove('show')
 		detailSlideSidebar.classList.remove('show')
+		resultBox.classList.add('invisible')
 	}
 
 	// 左メニューのリスト一覧をクリックしたときに発火
@@ -64,6 +66,14 @@ function initSideBar() {
 			}
 			reader.readAsDataURL(file)
 		})
+	})
+
+	const closeButton = document.getElementById('cross')
+	const searchResultContainer = document.getElementById('search-result')
+
+	closeButton.addEventListener('click', function (event) {
+		event.preventDefault()
+		searchResultContainer.classList.add('invisible')
 	})
 }
 
