@@ -1,7 +1,8 @@
 require 'open-uri'
 
 image_files = [
-  Rails.root.join('db/seeds/images/dummy1.jpg')
+  Rails.root.join('db/seeds/images/dummy1.jpg'),
+  Rails.root.join('db/seeds/images/dummy2.jpg')
 ]
 
 puts 'Seeding users...'
@@ -42,6 +43,20 @@ tdl1 = Todolist.create!(
 tdl1.image.attach(
   io: File.open(image_files[0]),
   filename: 'dummy1.jpg',
+  content_type: 'image/jpg'
+)
+
+tdl2 = Todolist.create!(
+  latitude: 35.6823799,
+  longitude: 139.7668608,
+  details: 'ピザ発祥の地の小麦粉だから生まれるモッチモチの食感
+本格石釜で焼き上げる13種のこだわりピッツァ、海の香り漂う産地直送シーフード、リーズナブルなアンティパスト。',
+  todo: t1
+)
+
+tdl2.image.attach(
+  io: File.open(image_files[1]),
+  filename: 'dummy2.jpg',
   content_type: 'image/jpg'
 )
 
