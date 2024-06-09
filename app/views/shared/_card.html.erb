@@ -1,15 +1,15 @@
 <div class="card shadow-sm">
   <a href="#" class="link-opacity-75-hover detail-view">
     <div class="row g-0">
-      <div class="col-md-2">
+      <div class="d-flex card-header p-0">
         <%= image_with_placeholder(todo[:image], todo[:title]) %>
-      </div>
-      <div class="col-md-10">
-        <div class="card-body">
+        <div class="d-flex flex-column p-2 flex-fill">
           <h5 class="card-title mb-0"><%= todo[:title] %></h5>
           <p class="card-text author-text"><%= todo[:author] %></p>
-          <p class="card-text description-text"><%= todo[:description] %></p>
         </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text description-text"><%= todo[:description] %></p>
       </div>
     </div>
   </a>

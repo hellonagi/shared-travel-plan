@@ -31,7 +31,6 @@ async function initSearch() {
 		})
 	})
 
-
 	const detailTitle = document.getElementById('detail-title')
 	const detailDescription = document.getElementById('detail-description')
 	const detailAuthor = document.getElementById('detail-author')
@@ -106,11 +105,12 @@ async function initSearch() {
 						pinView.scale = 1
 					})
 
+					const img = $(`#img-${li.id}`).data(`img-${li.id}`)
 					div.id = `detail-card-${li.id}`
 					div.className = 'card'
 					div.dataset.id = li.id
 					div.innerHTML = `
-						<img src="${li.image}" class="card-img-top" alt="${li.id}">
+						${htmlDecode(img)}
 						<div class="card-body">
 							<p id="detail" class="card-text">${li.details}</p>
 						</div>
@@ -120,6 +120,12 @@ async function initSearch() {
 			}
 		}
 	})
+
+	function htmlDecode(input) {
+		var e = document.createElement('div')
+		e.innerHTML = input
+		return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue
+	}
 }
 
 initSearch()
