@@ -1,5 +1,4 @@
 async function initMap() {
-
 	let infoWindow
 	window.map = null
 	window.markers = []
@@ -155,6 +154,11 @@ async function initMap() {
             <label class="form-label small" for="todo_todo_lists_attributes_${newId}_details">詳細</label>
             <textarea rows="3" class="form-control" name="todo[todo_lists_attributes][${newId}][details]" id="todo_todo_lists_attributes_${newId}_details"></textarea>
           </fieldset>
+
+					<fieldset class="form-group mt-2">
+        		<label class="form-label small" for="todo_todo_lists_attributes_${newId}_image">画像アップロード</label>
+        		<input type="file" class="form-control-file" name="todo[todo_lists_attributes][${newId}][image]" id="todo_todo_lists_attributes_${newId}_image" accept="image/*">
+      		</fieldset>
 
           <span class="remove_fields btn btn-sm btn-outline-danger mt-2">削除</span>
         </div>
