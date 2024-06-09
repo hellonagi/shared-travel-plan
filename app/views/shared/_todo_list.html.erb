@@ -9,6 +9,9 @@
       <% @todos.each do |todo| %>
         <div id="card-<%= todo[:id] %>" class="col-12 g-2 card-view">
           <%= render partial: "shared/card", locals: {todo: todo} %>
+          <% todo[:list].each do |li| %>
+            <div id="img-<%= li[:id] %>" data-img-<%= li[:id] %>="<%= CGI.escapeHTML(image_with_placeholder(li.image, li[:details])) %>"></div>
+          <% end %>
         </div>
       <% end %>
     </div>
