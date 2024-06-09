@@ -1,11 +1,17 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
+  before_action :set_todo, only: [:create]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def index
+    @comments = Comment.all
   end
 
   def show
+  end
+
+  def new
+    @comment = Comment.new
   end
 
   def create
@@ -13,9 +19,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @todo, notice: 'コメントが正常に作成されました。'
+      redirect_to todo_path(@todo), notice: 'コメントが正常に作成されました。'
     else
-      redirect_to @todo, alert: 'コメントの作成に失敗しました。'
+      redirect_to todo_path(@todo), alert: 'コメントの作成に失敗しました。'
     end
   end
 
@@ -24,7 +30,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to @todo, notice: 'コメントが正常に更新されました。'
+      redirect_to comment_path(@comment), notice: 'コメントが正常に更新されました。'
     else
       render :edit
     end
@@ -32,7 +38,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to @todo, notice: 'コメントが削除されました。'
+    redirect_to todo_path(@comment.todo), notice: 'コメントが削除されました。'
   end
 
   private

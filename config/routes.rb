@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   #todostate(todoを追加)
   get  'todostates/new',    to: 'todostates#new'
-  post 'todostates/create', to: 'todostates#create', as: 'add_todo'  
+  post 'todostates/create', to: 'todostates#create', as: 'add_todo'
 
   #todoの状況を参照
   get 'todostates/:id',     to: 'todostates#show',as: 'todostate'
@@ -32,5 +32,17 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :comments, only: [:index, :show]
+  # commentを作成
+  get  'comments/new',      to: 'comments#new', as: 'new_comment'
+  post 'comments/create',   to: 'comments#create', as: 'create_comment'
+
+  #　commentを参照
+  get  'comments/:id',      to: 'comments#show', as: 'comment'
+
+  # commentを更新
+  get  'comments/:id/edit', to: 'comments#edit', as: 'edit_comment'
+  patch 'comments/:id',     to: 'comments#update', as: 'update_comment'
+
+  # commentを削除
+  delete 'comments/:id',    to: 'comments#destroy', as: 'destroy_comment'
 end
